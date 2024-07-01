@@ -11,48 +11,93 @@
             onclick="coreui.Sidebar.getInstance(document.querySelector(&quot;#sidebar&quot;)).toggle()"></button>
     </div>
     <ul class="sidebar-nav" data-coreui="navigation" data-simplebar>
-        <li class="nav-item"><a class="nav-link" href="{{ route('dashboard') }}">
-                <svg class="nav-icon">
-                    <use xlink:href="{{ asset('node_modules/@coreui/icons/sprites/free.svg#cil-speedometer') }}"></use>
-                </svg> Dashboard<span class="badge badge-sm bg-info ms-auto">NEW</span></a></li>
-        <li class="nav-item"><a class="nav-link" href="{{ route('user.index') }}">
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('dashboard') }}">
+                <i class="cil-speedometer nav-icon"></i>
+                Dashboard
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('user.index') }}">
                 <i class="cil-group nav-icon"></i>
-                Kelola User
-            </a></li>
-        <li class="nav-group"><a class="nav-link nav-group-toggle" href="#">
-                <svg class="nav-icon">
-                    <use xlink:href="{{ asset('node_modules/@coreui/icons/sprites/free.svg#cil-puzzle') }}"></use>
-                </svg>Basis Pengetahuan</a>
+                Data User
+            </a>
+        </li>
+        <li class="nav-group">
+            <a class="nav-link nav-group-toggle" href="#">
+                <i class="cil-book nav-icon"></i>
+                Basis Pengetahuan
+            </a>
             <ul class="nav-group-items compact">
-                <li class="nav-item"><a class="nav-link" href="base/accordion.html"><span class="nav-icon"><span
-                                class="nav-icon-bullet"></span></span> Accordion</a></li>
-                <li class="nav-item"><a class="nav-link" href="base/breadcrumb.html"><span class="nav-icon"><span
-                                class="nav-icon-bullet"></span></span> Breadcrumb</a></li>
-                <li class="nav-item"><a class="nav-link" href="base/cards.html"><span class="nav-icon"><span
-                                class="nav-icon-bullet"></span></span> Cards</a></li>
-                <li class="nav-item"><a class="nav-link" href="base/carousel.html"><span class="nav-icon"><span
-                                class="nav-icon-bullet"></span></span> Carousel</a></li>
-                <li class="nav-item"><a class="nav-link" href="base/collapse.html"><span class="nav-icon"><span
-                                class="nav-icon-bullet"></span></span> Collapse</a></li>
-                <li class="nav-item"><a class="nav-link" href="base/list-group.html"><span class="nav-icon"><span
-                                class="nav-icon-bullet"></span></span> List group</a></li>
-                <li class="nav-item"><a class="nav-link" href="base/navs-tabs.html"><span class="nav-icon"><span
-                                class="nav-icon-bullet"></span></span> Navs &amp; Tabs</a></li>
-                <li class="nav-item"><a class="nav-link" href="base/pagination.html"><span class="nav-icon"><span
-                                class="nav-icon-bullet"></span></span> Pagination</a></li>
-                <li class="nav-item"><a class="nav-link" href="base/placeholders.html"><span class="nav-icon"><span
-                                class="nav-icon-bullet"></span></span> Placeholders</a></li>
-                <li class="nav-item"><a class="nav-link" href="base/popovers.html"><span class="nav-icon"><span
-                                class="nav-icon-bullet"></span></span> Popovers</a></li>
-                <li class="nav-item"><a class="nav-link" href="base/progress.html"><span class="nav-icon"><span
-                                class="nav-icon-bullet"></span></span> Progress</a></li>
-                <li class="nav-item"><a class="nav-link" href="base/spinners.html"><span class="nav-icon"><span
-                                class="nav-icon-bullet"></span></span> Spinners</a></li>
-                <li class="nav-item"><a class="nav-link" href="base/tables.html"><span class="nav-icon"><span
-                                class="nav-icon-bullet"></span></span> Tables</a></li>
-                <li class="nav-item"><a class="nav-link" href="base/tooltips.html"><span class="nav-icon"><span
-                                class="nav-icon-bullet"></span></span> Tooltips</a></li>
+                <li class="nav-item">
+                    <a class="nav-link" href="base/accordion.html">
+                        <i class="cil-puzzle"></i>
+                        <span class="px-2">
+                            Data Kriteria
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="base/accordion.html">
+                        <i class="cil-puzzle"></i>
+                        <span class="px-2">
+                            Data Gejala
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="base/accordion.html">
+                        <i class="cil-puzzle"></i>
+                        <span class="px-2">
+                            Data Kategori & Solusi
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="base/accordion.html">
+                        <i class="cil-puzzle"></i>
+                        <span class="px-2">
+                            Data Pertanyaan
+                        </span>
+                    </a>
+                </li>
             </ul>
+        </li>
+        <li class="nav-group">
+            <a class="nav-link nav-group-toggle" href="#">
+                <i class="cil-book nav-icon"></i>
+                Analisis Data
+            </a>
+            <ul class="nav-group-items compact">
+                <li class="nav-item">
+                    <a class="nav-link" href="base/accordion.html">
+                        <i class="cil-puzzle"></i>
+                        <span class="px-2">
+                            Analisis Hierarki Kriteria
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="base/accordion.html">
+                        <i class="cil-puzzle"></i>
+                        <span class="px-2">
+                            Analisis Hierarki Gejala
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('user.index') }}">
+                <i class="far fa-question-circle nav-icon"></i>
+                Data Arsip Diagnostik
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('user.index') }}">
+                <i class="far fa-question-circle nav-icon"></i>
+                Tes Diagnostik
+            </a>
         </li>
         <li class="nav-item"><a class="nav-link" href="colors.html">
                 <svg class="nav-icon">

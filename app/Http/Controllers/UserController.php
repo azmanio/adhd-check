@@ -32,8 +32,8 @@ class UserController extends Controller
     {
         $data = $request->validate([
             'nama' => ['required', 'string'],
-            'email' => ['required', 'email'],
-            'password' => ['required', 'string', 'confirmed'],
+            'email' => ['required', 'email', 'unique:users,email'],
+            'password' => ['required', 'min:8', 'confirmed'],
             'no_hp' => ['required', 'string'],
             'role' => ['required', 'in:admin,user'],
             'image_path' => ['nullable', 'image']

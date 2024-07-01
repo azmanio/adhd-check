@@ -2,21 +2,6 @@
 
 @section('content')
     <div class="container-lg px-4">
-        <div class="row mb-4">
-            <div class="col-xl-5 col-xxl-4 mb-4 mb-xl-0">
-                <script id="_carbonads_js" async="" type="text/javascript"
-                    src="//cdn.carbonads.com/carbon.js?serve=CEAICKJY&amp;placement=coreuiio"></script>
-            </div>
-            <div class="col-xl-7 col-xxl-8"><a class="banner-coreui-pro"
-                    href="https://coreui.io/product/bootstrap-dashboard-template/?theme=default">
-                    <svg class="banner-coreui-pro-logo d-xl-none d-xxl-block" width="100" height="100" alt="CoreUI Logo">
-                        <use xlink:href="assets/brand/coreui.svg#signet"></use>
-                    </svg>
-                    <h4 class="fw-bolder">Elevate Your Design with CoreUI PRO!</h4>
-                    <p>Unlock a world of possibilities: More themes, enhanced components (Date Picker, Multi
-                        Select, and more), and priority support.</p>
-                </a></div>
-        </div>
         <div class="row g-4 mb-4">
             <div class="col-sm-6 col-xl-3">
                 <div class="card text-white bg-primary">
@@ -123,8 +108,8 @@
                             <div>Sessions</div>
                         </div>
                         <div class="dropdown">
-                            <button class="btn btn-transparent text-white p-0" type="button"
-                                data-coreui-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <button class="btn btn-transparent text-white p-0" type="button" data-coreui-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
                                 <svg class="icon">
                                     <use xlink:href="node_modules/@coreui/icons/sprites/free.svg#cil-options">
                                     </use>

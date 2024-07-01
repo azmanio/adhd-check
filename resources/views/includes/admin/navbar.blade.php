@@ -143,14 +143,35 @@
     <div class="container-fluid px-4">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb my-0">
-                <li class="breadcrumb-item"><a href="#">Home</a>
+                <li class="breadcrumb-item">
+                    <a href="{{ route('dashboard') }}">Home</a>
                 </li>
-                <li class="breadcrumb-item active">
-                    @if (Route::currentRouteName() == 'dashboard')
+                @if (Route::currentRouteName() == 'dashboard')
+                    <li class="breadcrumb-item active">
                         <span>Dashboard</span>
-                    @elseif (str_contains(Route::currentRouteName(), 'user.'))
+                    </li>
+                @elseif (Route::currentRouteName() == 'user.index')
+                    <li class="breadcrumb-item active">
                         <span>Kelola User</span>
+                    </li>
+                @elseif (str_contains(Route::currentRouteName(), 'user.'))
+                    {{-- @elseif (Route::currentRouteName() == 'user.create' || Route::currentRouteName() == 'user.edit') --}}
+                    <li class="breadcrumb-item">
+                        <a href="{{ route('user.index') }}">
+                            <span>Kelola User</span>
+                        </a>
+                    </li>
+                    @if (Route::currentRouteName() == 'user.create')
+                        <li class="breadcrumb-item active">
+                            <span>Tambah User</span>
+                        </li>
+                    @elseif(Route::currentRouteName() == 'user.edit')
+                        <li class="breadcrumb-item active">
+                            <span>Ubah User</span>
+                        </li>
                     @endif
+
+                @endif
                 </li>
             </ol>
         </nav>

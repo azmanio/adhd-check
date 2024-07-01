@@ -11,6 +11,15 @@
         <div class="card">
             <div class="card-body">
                 <form action="{{ route('user.store') }}" method="POST" enctype="multipart/form-data">
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     @csrf
                     <div class="mb-3">
                         <label for="image_path" class="form-label">Foto Profil <small>(optional)</small></label>

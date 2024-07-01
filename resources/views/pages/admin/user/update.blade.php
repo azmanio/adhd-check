@@ -25,7 +25,7 @@
                     <div class="mb-3">
                         <div class="d-flex justify-content-center">
                             @if ($user->image_path)
-                                <img src="/storage/{{ $user->image_path }}" alt="Foto" class="rounded-circle"
+                                <img src="{{ asset('storage/' . $user->image_path) }}" alt="Foto" class="rounded-circle"
                                     style="height: 150px; width: 150px; object-fit: cover">
                             @else
                                 <img src="{{ asset('assets/img/user.png') }}" alt="Foto" class="rounded-circle"

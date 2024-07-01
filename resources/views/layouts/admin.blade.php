@@ -22,7 +22,7 @@
 <body>
     @include('includes.admin.sidebar')
 
-    <div class="wrapper d-flex flex-column min-vh-100">
+    <main class="wrapper d-flex flex-column min-vh-100">
 
         @include('includes.admin.navbar')
 
@@ -34,7 +34,7 @@
 
         @include('includes.admin.footer')
 
-    </div>
+    </main>
 
     @include('includes.admin.script')
 
