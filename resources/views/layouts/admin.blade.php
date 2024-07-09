@@ -22,19 +22,19 @@
 <body>
     @include('includes.admin.sidebar')
 
-    <main class="wrapper d-flex flex-column min-vh-100">
+    <div class="wrapper d-flex flex-column min-vh-100">
 
         @include('includes.admin.navbar')
 
-        <div class="body flex-grow-1">
+        <main class="body flex-grow-1">
 
             @yield('content')
 
-        </div>
+        </main>
 
         @include('includes.admin.footer')
 
-    </main>
+    </div>
 
     @include('includes.admin.script')
 

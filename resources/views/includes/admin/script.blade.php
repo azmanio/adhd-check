@@ -1,9 +1,9 @@
-<script src="{{ asset('js/config.js') }}"></script>
-<script src="{{ asset('js/color-modes.js') }}"></script>
+<script src="{{ asset('assets/admin/js/config.js') }}"></script>
+<script src="{{ asset('assets/admin/js/color-modes.js') }}"></script>
 
 <!-- CoreUI and necessary plugins-->
-<script src="{{ asset('node_modules/@coreui/coreui/dist/js/coreui.bundle.min.js') }}"></script>
-<script src="{{ asset('node_modules/simplebar/dist/simplebar.min.js') }}"></script>
+<script src="{{ asset('assets/admin/node_modules/@coreui/coreui/dist/js/coreui.bundle.min.js') }}"></script>
+<script src="{{ asset('assets/admin/node_modules/simplebar/dist/simplebar.min.js') }}"></script>
 
 <script>
     const header = document.querySelector('header.header');
@@ -15,10 +15,10 @@
     });
 </script>
 <!-- Plugins and scripts required by this view-->
-<script src="{{ asset('node_modules/chart.js/dist/chart.umd.js') }}"></script>
-<script src="{{ asset('node_modules/@coreui/chartjs/dist/js/coreui-chartjs.js') }}"></script>
-<script src="{{ asset('node_modules/@coreui/utils/dist/umd/index.js') }}"></script>
-<script src="{{ asset('js/main.js') }}"></script>
+<script src="{{ asset('assets/admin/node_modules/chart.js/dist/chart.umd.js') }}"></script>
+<script src="{{ asset('assets/admin/node_modules/@coreui/chartjs/dist/js/coreui-chartjs.js') }}"></script>
+<script src="{{ asset('assets/admin/node_modules/@coreui/utils/dist/umd/index.js') }}"></script>
+<script src="{{ asset('assets/admin/js/main.js') }}"></script>
 
 <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
     crossorigin="anonymous"></script>

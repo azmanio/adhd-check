@@ -1,9 +1,9 @@
 <div class="sidebar sidebar-fixed border-end" id="sidebar">
     <div class="sidebar-header border-bottom py-0">
         <div class="sidebar-brand">
-            <img src="{{ asset('assets/img/logo-adhd-icon.png') }}" alt="" srcset=""
+            <img src="{{ asset('assets/admin/img/logo-adhd-icon.png') }}" alt="" srcset=""
                 class="sidebar-brand-narrow" width="32" height="32">
-            <img src="{{ asset('assets/img/logo-adhd-full.png') }}" alt="" srcset=""
+            <img src="{{ asset('assets/admin/img/logo-adhd-full.png') }}" alt="" srcset=""
                 class="sidebar-brand-full" height="45">
         </div>
         <button class="btn-close d-lg-none" type="button" data-coreui-dismiss="offcanvas" data-coreui-theme="dark"
@@ -19,7 +19,7 @@
         </li>
         <li class="nav-title">Kelola Data</li>
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('user.index') }}">
+            <a class="nav-link @if (str_contains(Route::currentRouteName(), 'user.')) active @endif" href="{{ route('user.index') }}">
                 <i class="cil-group nav-icon"></i>
                 User
             </a>
@@ -65,28 +65,29 @@
             </ul>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('user.index') }}">
+            <a class="nav-link" href="#">
                 <i class="cil-chart nav-icon"></i>
                 Arsip Diagnostik
             </a>
         </li>
         <li class="nav-title">Analisis Data</li>
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('user.index') }}">
+            <a class="nav-link" href="#">
                 <i class="fas fa-balance-scale-right nav-icon"></i>
                 Perbandingan Kriteria
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('user.index') }}">
+            <a class="nav-link" href="#">
                 <i class="fas fa-balance-scale-right nav-icon"></i>
                 Perbandingan Gejala
             </a>
         </li>
         <li class="nav-title">Layanan</li>
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('user.index') }}">
-                <i class="fas fa-diagnoses nav-icon"></i>
+            <a class="nav-link" href="#">
+                <i class="fas fa-stethoscope nav-icon"></i>
+                {{-- <i class="fas fa-diagnoses nav-icon"></i> --}}
                 Tes Diagnostik
             </a>
         </li>

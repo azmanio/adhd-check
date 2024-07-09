@@ -27,7 +27,7 @@
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Kelola Data User</h1>
             <a href="{{ route('user.create') }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
-                <i class="cil-user-plus"></i>
+                <i class="cil-user-plus icon"></i>
                 Tambah User
             </a>
         </div>

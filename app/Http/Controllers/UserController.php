@@ -36,7 +36,7 @@ class UserController extends Controller
             'password' => ['required', 'min:8', 'confirmed'],
             'no_hp' => ['required', 'string'],
             'role' => ['required', 'in:admin,user'],
-            'image_path' => ['nullable', 'image']
+            'image_path' => ['nullable', 'image'],
         ]);
 
         if (@$data['image_path']) {
@@ -77,7 +77,7 @@ class UserController extends Controller
             'password' => ['nullable', 'string', 'confirmed'],
             'no_hp' => ['required', 'string'],
             'role' => ['required', 'in:admin,user'],
-            'image_path' => ['nullable', 'image']
+            'image_path' => ['nullable', 'image'],
         ]);
 
         if (@$data['image_path']) {

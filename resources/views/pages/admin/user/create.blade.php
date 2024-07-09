@@ -8,7 +8,7 @@
             <h1 class="h3 mb-0 text-gray-800">Tambah User</h1>
         </div>
 
-        <div class="card">
+        <div class="card mb-4">
             <div class="card-body">
                 <form action="{{ route('user.store') }}" method="POST" enctype="multipart/form-data">
                     @if ($errors->any())
