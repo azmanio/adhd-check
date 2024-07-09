@@ -14,17 +14,16 @@
                             morning had. Any propose assist compliment occasional too reasonably</p>
                         <a class="btn-solid-lg" href="#introduction">More details</a>
                         <a class="btn-outline-lg" href="#contact">Contact us</a>
-                    </div> <!-- end of text-container -->
-                </div> <!-- end of col -->
+                    </div>
+                </div>
                 <div class="col-lg-5 col-xl-7">
                     <div class="image-container">
                         <img class="img-fluid" src="assets/img/header.png" alt="alternative">
-                    </div> <!-- end of image-container -->
-                </div> <!-- end of col -->
-            </div> <!-- end of row -->
-        </div> <!-- end of container -->
-    </header> <!-- end of header -->
-    <!-- end of header -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
 
     <!-- Statistics -->
     <div class="counter">
@@ -38,30 +37,28 @@
                             <div data-purecounter-start="0" data-purecounter-end="231" data-purecounter-duration="3"
                                 class="purecounter">1</div>
                             <div class="counter-info">Happy Customers</div>
-                        </div> <!-- end of counter-cell -->
+                        </div>
                         <div class="counter-cell">
                             <div data-purecounter-start="0" data-purecounter-end="385" data-purecounter-duration="1.5"
                                 class="purecounter">1</div>
                             <div class="counter-info">Issues Solved</div>
-                        </div> <!-- end of counter-cell -->
+                        </div>
                         <div class="counter-cell">
                             <div data-purecounter-start="0" data-purecounter-end="159" data-purecounter-duration="3"
                                 class="purecounter">1</div>
                             <div class="counter-info">Good Reviews</div>
-                        </div> <!-- end of counter-cell -->
+                        </div>
                         <div class="counter-cell">
                             <div data-purecounter-start="0" data-purecounter-end="128" data-purecounter-duration="3"
                                 class="purecounter">1</div>
                             <div class="counter-info">Case Studies</div>
-                        </div> <!-- end of counter-cell -->
-                    </div> <!-- end of counter-container -->
-                    <!-- end of counter -->
+                        </div>
+                    </div>
 
-                </div> <!-- end of col -->
-            </div> <!-- end of row -->
-        </div> <!-- end of container -->
-    </div> <!-- end of counter -->
-    <!-- end of statistics -->
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Introduction -->
     <div id="introduction" class="basic-1 bg-gray">
@@ -73,11 +70,10 @@
                         added. Married he hearing am it totally removal. Remove but suffer wanted his lively length.
                         Moonlight two applauded conveying end direction old principle but. Are expenses distance
                         weddings perceive</p>
-                </div> <!-- end of col -->
-            </div> <!-- end of row -->
-        </div> <!-- end of container -->
-    </div> <!-- end of basic-1 -->
-    <!-- end of introduction -->
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Details 1 -->
     <div id="details" class="basic-2">
@@ -87,8 +83,8 @@
                 <div class="col-lg-6 col-xl-5">
                     <div class="image-container">
                         <img class="img-fluid" src="assets/img/details-1.png" alt="alternative">
-                    </div> <!-- end of image-container -->
-                </div> <!-- end of col -->
+                    </div>
+                </div>
                 <div class="col-lg-6 col-xl-7">
                     <div class="text-container">
                         <h2>Office spaces should be unique they don’t need to look the same</h2>
@@ -115,12 +111,11 @@
                             </li>
                         </ul>
                         <a class="btn-solid-reg" href="article.html">Get started</a>
-                    </div> <!-- end of text-container -->
-                </div> <!-- end of col -->
-            </div> <!-- end of row -->
-        </div> <!-- end of container -->
-    </div> <!-- end of basic-2 -->
-    <!-- end of details 1 -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Services -->
     <div id="services" class="cards-1 bg-gray">
@@ -146,8 +141,8 @@
                                 <div class="flex-grow-1">Announcing of invita mrore wo tion principle</div>
                             </li>
                         </ul>
-                    </div> <!-- end of text-container -->
-                </div> <!-- end of col -->
+                    </div>
+                </div>
                 <div class="col-lg-7">
                     <div class="card-container">
 
@@ -160,7 +155,6 @@
                                 <h5 class="card-title">Space analysis and planning</h5>
                             </div>
                         </div>
-                        <!-- end of card -->
 
                         <!-- Card -->
                         <div class="card">
@@ -171,7 +165,6 @@
                                 <h5 class="card-title">Design and color choosing</h5>
                             </div>
                         </div>
-                        <!-- end of card -->
 
                         <!-- Card -->
                         <div class="card">
@@ -182,7 +175,6 @@
                                 <h5 class="card-title">Materials and delivery</h5>
                             </div>
                         </div>
-                        <!-- end of card -->
 
                         <!-- Card -->
                         <div class="card">
@@ -193,7 +185,6 @@
                                 <h5 class="card-title">Execute the concept</h5>
                             </div>
                         </div>
-                        <!-- end of card -->
 
                         <!-- Card -->
                         <div class="card">
@@ -204,7 +195,6 @@
                                 <h5 class="card-title">Creating great atmosphere</h5>
                             </div>
                         </div>
-                        <!-- end of card -->
 
                         <!-- Card -->
                         <div class="card">
@@ -215,14 +205,12 @@
                                 <h5 class="card-title">Evaluation and reporting</h5>
                             </div>
                         </div>
-                        <!-- end of card -->
 
-                    </div> <!-- end of container -->
-                </div> <!-- end of col -->
-            </div> <!-- end of row -->
-        </div> <!-- end of container -->
-    </div> <!-- end of cards-1 -->
-    <!-- end of services -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Details 2 -->
     <div class="basic-3">
@@ -237,17 +225,16 @@
                             principles apartments. Has visitor law attacks pretend you calling own excited painted.
                             Contented attending</p>
                         <a class="btn-solid-reg" href="article.html">Get started</a>
-                    </div> <!-- end of text-container -->
-                </div> <!-- end of col -->
+                    </div>
+                </div>
                 <div class="col-lg-6 col-xl-5">
                     <div class="image-container">
                         <img class="img-fluid" src="assets/img/details-2.png" alt="alternative">
-                    </div> <!-- end of image-container -->
-                </div> <!-- end of col -->
-            </div> <!-- end of row -->
-        </div> <!-- end of container -->
-    </div> <!-- end of basic-3 -->
-    <!-- end of details 2 -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Invitation -->
     <div class="basic-4 bg-gray">
@@ -257,11 +244,10 @@
                     <h4>Our team of highly skilled designers and interior construction workers can deliver above your
                         level of expections</h4>
                     <a class="btn-solid-lg" href="#contact">Get quote</a>
-                </div> <!-- end of col -->
-            </div> <!-- end of row -->
-        </div> <!-- end of container -->
-    </div> <!-- end of basic-4 -->
-    <!-- end of invitation -->
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Projects -->
     <div id="projects" class="cards-2">
@@ -269,8 +255,8 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h2 class="h2-heading">Projects we developed</h2>
-                </div> <!-- end of col -->
-            </div> <!-- end of row -->
+                </div>
+            </div>
             <div class="row">
                 <div class="col-lg-12">
 
@@ -284,7 +270,6 @@
                             </p>
                         </div>
                     </div>
-                    <!-- end of card -->
 
                     <!-- Card -->
                     <div class="card">
@@ -295,7 +280,6 @@
                                 collected <a class="blue no-line" href="article.html">...Read more</a></p>
                         </div>
                     </div>
-                    <!-- end of card -->
 
                     <!-- Card -->
                     <div class="card">
@@ -306,7 +290,6 @@
                                 son <a class="blue no-line" href="article.html">...Read more</a></p>
                         </div>
                     </div>
-                    <!-- end of card -->
 
                     <!-- Card -->
                     <div class="card">
@@ -317,7 +300,6 @@
                                     class="blue no-line" href="article.html">...Read more</a></p>
                         </div>
                     </div>
-                    <!-- end of card -->
 
                     <!-- Card -->
                     <div class="card">
@@ -328,7 +310,6 @@
                                 only <a class="blue no-line" href="article.html">...Read more</a></p>
                         </div>
                     </div>
-                    <!-- end of card -->
 
                     <!-- Card -->
                     <div class="card">
@@ -339,13 +320,11 @@
                                 much <a class="blue no-line" href="article.html">...Read more</a></p>
                         </div>
                     </div>
-                    <!-- end of card -->
 
-                </div> <!-- end of col -->
-            </div> <!-- end of row -->
-        </div> <!-- end of container -->
-    </div> <!-- end of cards-2 -->
-    <!-- end of projects -->
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Testimonials -->
     <div class="slider-1 bg-gray">
@@ -368,8 +347,7 @@
                                         how about some words here done”</p>
                                     <div class="testimonial-author">Marlene Visconte</div>
                                     <div class="testimonial-position">General Manager - Scouter</div>
-                                </div> <!-- end of swiper-slide -->
-                                <!-- end of slide -->
+                                </div>
 
                                 <!-- Slide -->
                                 <div class="swiper-slide">
@@ -380,8 +358,7 @@
                                         how about some words here done”</p>
                                     <div class="testimonial-author">John Spiker</div>
                                     <div class="testimonial-position">Team Leader - Vanquish</div>
-                                </div> <!-- end of swiper-slide -->
-                                <!-- end of slide -->
+                                </div>
 
                                 <!-- Slide -->
                                 <div class="swiper-slide">
@@ -392,25 +369,21 @@
                                         how about some words here done”</p>
                                     <div class="testimonial-author">Stella Virtuoso</div>
                                     <div class="testimonial-position">Design Chief - Bikegirl</div>
-                                </div> <!-- end of swiper-slide -->
-                                <!-- end of slide -->
+                                </div>
 
-                            </div> <!-- end of swiper-wrapper -->
+                            </div>
 
                             <!-- Add Arrows -->
                             <div class="swiper-button-next"></div>
                             <div class="swiper-button-prev"></div>
-                            <!-- end of add arrows -->
 
-                        </div> <!-- end of swiper-container -->
-                    </div> <!-- end of slider-container -->
-                    <!-- end of card slider -->
+                        </div>
+                    </div>
 
-                </div> <!-- end of col -->
-            </div> <!-- end of row -->
-        </div> <!-- end of container -->
-    </div> <!-- end of slider-1 -->
-    <!-- end of testimonials -->
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Contact -->
     <div id="contact" class="form-1">
@@ -421,8 +394,8 @@
                 <div class="col-lg-6">
                     <div class="image-container">
                         <img class="img-fluid" src="assets/img/contact.png" alt="alternative">
-                    </div> <!-- end of image-container -->
-                </div> <!-- end of col -->
+                    </div>
+                </div>
                 <div class="col-lg-6">
                     <div class="text-container">
                         <h2>Contact us for a quote using the following form</h2>
@@ -442,11 +415,10 @@
                                 <button type="submit" class="form-control-submit-button">Submit</button>
                             </div>
                         </form>
-                        <!-- end of contact form -->
-                    </div> <!-- end of text-container -->
-                </div> <!-- end of col -->
-            </div> <!-- end of row -->
-        </div> <!-- end of container -->
-    </div> <!-- end of form-1 -->
-    <!-- end of contact -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection

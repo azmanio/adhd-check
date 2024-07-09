@@ -16,29 +16,25 @@ class AuthController extends Controller
 
     public function registerStore(Request $request)
     {
-        $request->validate(
-            [
-                'email' => ['required', 'email', 'unique:users,email'],
-                'password' => ['required', 'confirmed', 'min:8'],
-                'nama' => ['required', 'string'],
-                'no_hp' => ['required', 'string', 'unique:users,no_hp'],
-                'image_path' => ['nullable', 'string'],
-            ],
-            [
-                'email.required' => 'Email Harus Diisi.',
-                'email.email' => 'Masukkan Email Yang Valid.',
-                'email.unique' => 'Email Sudah Terdaftar.',
-                'password.required' => 'Password Harus Diisi.',
-                'password.confirmed' => 'Konfirmasi Password Tidak Valid.',
-                'nama.required' => 'Nama Harus Diisi.',
-                'no_hp.required' => 'No HP Harus Diisi.',
-            ]
-        );
+        $request->validate([
+            'email' => ['required', 'email', 'unique:users,email'],
+            'password' => ['required', 'confirmed', 'min:8'],
+            'nama' => ['required', 'string'],
+            'no_hp' => ['required', 'string', 'unique:users,no_hp'],
+            'image_path' => ['nullable', 'string'],
+        ], [
+            'email.required' => 'Email Harus Diisi.',
+            'email.email' => 'Masukkan Email Yang Valid.',
+            'email.unique' => 'Email Sudah Terdaftar.',
+            'password.required' => 'Password Harus Diisi.',
+            'password.confirmed' => 'Konfirmasi Password Tidak Valid.',
+            'nama.required' => 'Nama Harus Diisi.',
+            'no_hp.required' => 'No HP Harus Diisi.',
+        ]);
 
         DB::beginTransaction();
 
         try {
-
             User::create($request->all());
 
             DB::commit();
