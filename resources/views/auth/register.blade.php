@@ -1,9 +1,12 @@
 @extends('layouts.app')
 
-<div class="bg-body-tertiary d-flex flex-row align-items-center mt-5">
+<div class="d-flex flex-row align-items-center mt-5">
     <div class="container mt-5">
-        <div class="row justify-content-center">
-            <div class="col-md-6">
+        <div class="row d-flex justify-content-between">
+            <div class="col-lg-6">
+                <img src="{{ asset('assets/img/register.jpg') }}" alt="register" style="width: 80%" class="img-fluid mx-5">
+            </div>
+            <div class="col-lg-6">
                 <div class="card mb-5 mx-4 rounded shadow">
                     <div class="card-body p-4 text-center">
                         <form action="{{ route('auth.registerStore') }}" method="POST">
@@ -18,7 +21,7 @@
                             @endif
                             @csrf
                             <h2>Daftar Sekarang</h2>
-                            <p class="text-body-secondary">
+                            <p class="text-body-secondary small">
                                 Sudah punya akun? <a href="{{ route('auth.login') }}" class="text-decoration-none"
                                     style="color: #157347"><strong>Masuk</strong></a>
                             </p>

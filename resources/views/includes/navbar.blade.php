@@ -13,7 +13,7 @@
         </button>
 
         <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
-            <ul class="navbar-nav ms-auto navbar-nav-scroll mx-3">
+            <ul class="navbar-nav ms-auto navbar-nav-scroll mx-2">
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('/#header') }}">Home</a>
                 </li>
@@ -25,7 +25,7 @@
                 </li>
             </ul>
             @if (Route::currentRouteName() !== 'auth.login')
-                <span class="nav-item mr-0">
+                <span class="nav-item">
                     <a class="btn-solid-sm" href="{{ route('auth.login') }}">Login</a>
                 </span>
             @endif

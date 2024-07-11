@@ -141,12 +141,13 @@
                             <use
                                 xlink:href="{{ asset('assets/admin/node_modules/@coreui/icons/sprites/free.svg#cil-lock-locked') }}">
                             </use>
-                        </svg> Lock Account</a><a class="dropdown-item" href="#">
-                        <svg class="icon me-2">
-                            <use
-                                xlink:href="{{ asset('assets/admin/node_modules/@coreui/icons/sprites/free.svg#cil-account-logout') }}">
-                            </use>
-                        </svg> Logout</a>
+                        </svg> Lock Account</a>
+                    <a class="dropdown-item" href="{{ route('auth.logout') }}">
+                        <div class="me-2">
+                            <i class="cil-account-logout icon"></i>
+                            <span class="mx-2">Logout</span>
+                        </div>
+                    </a>
                 </div>
             </li>
         </ul>
