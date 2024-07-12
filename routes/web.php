@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\GejalaController;
 use App\Http\Controllers\KriteriaController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -19,6 +20,9 @@ Route::prefix('admin')->group(function () {
 
     Route::resource('/kriteria', KriteriaController::class);
     Route::get('/kriteria/{kriterium}/delete', [KriteriaController::class, 'destroy'])->name('kriteria.delete');
+
+    Route::resource('/gejala', GejalaController::class);
+    Route::get('/gejala/{gejala}/delete', [GejalaController::class, 'destroy'])->name('gejala.delete');
 });
 
 

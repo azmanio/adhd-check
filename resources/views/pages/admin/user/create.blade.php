@@ -1,5 +1,23 @@
 @extends('layouts.admin')
 
+@section('breadcrumb')
+    <div class="container-fluid px-4">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb my-0">
+                <li class="breadcrumb-item">
+                    <a href="{{ route('dashboard') }}">Home</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="{{ route('user.index') }}">Kelola User</a>
+                </li>
+                <li class="breadcrumb-item active">
+                    Tambah User
+                </li>
+            </ol>
+        </nav>
+    </div>
+@endsection
+
 @section('content')
     <div class="container-fluid">
 
@@ -30,7 +48,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="nama" class="form-label">Nama</label>
-                        <input type="text" name="nama" class="form-control" id="nama" required>
+                        <input type="text" name="nama" class="form-control" id="nama" required autofocus>
                     </div>
                     <div class="mb-3">
                         <label for="email" class="form-label">Email</label>

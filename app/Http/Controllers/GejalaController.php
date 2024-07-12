@@ -12,7 +12,8 @@ class GejalaController extends Controller
      */
     public function index()
     {
-        //
+        $data = Gejala::all();
+        return view('pages.admin.gejala.index', compact('data'));
     }
 
     /**
@@ -20,7 +21,7 @@ class GejalaController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.admin.gejala.create');
     }
 
     /**
@@ -28,7 +29,13 @@ class GejalaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'kode_gejala' => ['required', 'string'],
+            'nama' => ['required', 'string'],
+        ]);
+
+        Gejala::create($data);
+        return redirect()->route('gejala.index');
     }
 
     /**
@@ -44,7 +51,7 @@ class GejalaController extends Controller
      */
     public function edit(Gejala $gejala)
     {
-        //
+        return view('pages.admin.gejala.update', compact('gejala'));
     }
 
     /**
@@ -52,7 +59,13 @@ class GejalaController extends Controller
      */
     public function update(Request $request, Gejala $gejala)
     {
-        //
+        $data = $request->validate([
+            'kode_gejala' => ['required', 'string'],
+            'nama' => ['required', 'string'],
+        ]);
+
+        $gejala->update($data);
+        return redirect()->route('gejala.index');
     }
 
     /**
@@ -60,6 +73,7 @@ class GejalaController extends Controller
      */
     public function destroy(Gejala $gejala)
     {
-        //
+        $gejala->delete();
+        return redirect()->route('gejala.index');
     }
 }

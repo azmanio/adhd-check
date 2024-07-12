@@ -39,7 +39,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="base/accordion.html">
+                    <a class="nav-link" href="{{ route('gejala.index') }}">
                         <i class="cil-stream"></i>
                         <span class="px-2">
                             Gejala

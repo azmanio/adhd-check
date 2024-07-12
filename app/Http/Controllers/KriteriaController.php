@@ -33,7 +33,6 @@ class KriteriaController extends Controller
             'kode_kriteria' => ['required', 'string'],
             'nama' => ['required', 'string'],
             'deskripsi' => ['required', 'string'],
-            'bobot_prioritas' => ['nullable', 'double'],
         ]);
 
         Kriteria::create($data);
@@ -65,7 +64,6 @@ class KriteriaController extends Controller
             'kode_kriteria' => ['required', 'string'],
             'nama' => ['required', 'string'],
             'deskripsi' => ['required', 'string'],
-            'bobot_prioritas' => ['nullable', 'double'],
         ]);
 
         $kriterium->update($data);

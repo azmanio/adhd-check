@@ -20,6 +20,21 @@
     </script>
 @endpush
 
+@section('breadcrumb')
+    <div class="container-fluid px-4">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb my-0">
+                <li class="breadcrumb-item">
+                    <a href="{{ route('dashboard') }}">Home</a>
+                </li>
+                <li class="breadcrumb-item active">
+                    Dashboard
+                </li>
+            </ol>
+        </nav>
+    </div>
+@endsection
+
 @section('content')
     <div class="container-fluid">
 

@@ -23,21 +23,19 @@
     @include('includes.admin.sidebar')
 
     <div class="wrapper d-flex flex-column min-vh-100">
-
-        @include('includes.admin.navbar')
+        <header class="header header-sticky p-0 mb-4">
+            @include('includes.admin.navbar')
+            @yield('breadcrumb')
+        </header>
 
         <main class="body flex-grow-1">
-
             @yield('content')
-
         </main>
 
         @include('includes.admin.footer')
-
     </div>
 
     @include('includes.admin.script')
-
 </body>
 
 </html>

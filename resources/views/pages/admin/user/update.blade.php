@@ -1,8 +1,25 @@
 @extends('layouts.admin')
 
+@section('breadcrumb')
+    <div class="container-fluid px-4">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb my-0">
+                <li class="breadcrumb-item">
+                    <a href="{{ route('dashboard') }}">Home</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="{{ route('user.index') }}">Kelola User</a>
+                </li>
+                <li class="breadcrumb-item active">
+                    Ubah User
+                </li>
+            </ol>
+        </nav>
+    </div>
+@endsection
+
 @section('content')
     <div class="container-fluid">
-
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Ubah User</h1>
