@@ -19,7 +19,7 @@
         </li>
         <li class="nav-title">Kelola Data</li>
         <li class="nav-item">
-            <a class="nav-link @if (str_contains(Route::currentRouteName(), 'user.')) active @endif" href="{{ route('user.index') }}">
+            <a class="nav-link" href="{{ route('user.index') }}">
                 <i class="cil-group nav-icon"></i>
                 User
             </a>
@@ -31,7 +31,8 @@
             </a>
             <ul class="nav-group-items compact">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('kriteria.index') }}">
+                    <a class="nav-link @if (str_contains(Route::currentRouteName(), 'kriteria.')) active @endif"
+                        href="{{ route('kriteria.index') }}">
                         <i class="cil-stream"></i>
                         <span class="px-2">
                             Kriteria
@@ -39,7 +40,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('gejala.index') }}">
+                    <a class="nav-link @if (str_contains(Route::currentRouteName(), 'gejala.')) active @endif"
+                        href="{{ route('gejala.index') }}">
                         <i class="cil-stream"></i>
                         <span class="px-2">
                             Gejala
@@ -47,7 +49,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="base/accordion.html">
+                    <a class="nav-link @if (str_contains(Route::currentRouteName(), 'solusi.')) active @endif"
+                        href="{{ route('solusi.index') }}">
                         <i class="cil-stream"></i>
                         <span class="px-2">
                             Kategori & Solusi

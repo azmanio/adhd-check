@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GejalaController;
 use App\Http\Controllers\KriteriaController;
+use App\Http\Controllers\SolusiController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,6 +24,9 @@ Route::prefix('admin')->group(function () {
 
     Route::resource('/gejala', GejalaController::class);
     Route::get('/gejala/{gejala}/delete', [GejalaController::class, 'destroy'])->name('gejala.delete');
+
+    Route::resource('/solusi', SolusiController::class);
+    Route::get('/solusi/{solusi}/delete', [SolusiController::class, 'destroy'])->name('solusi.delete');
 });
 
 

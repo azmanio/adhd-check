@@ -12,7 +12,8 @@ class SolusiController extends Controller
      */
     public function index()
     {
-        //
+        $data = Solusi::all();
+        return view('pages.admin.solusi.index', compact('data'));
     }
 
     /**
@@ -20,7 +21,7 @@ class SolusiController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.admin.solusi.create');
     }
 
     /**
@@ -28,7 +29,14 @@ class SolusiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'kategori' => ['required', 'string'],
+            'solusi' => ['required', 'string'],
+            'bobot_kategori' => ['required', 'numeric'],
+        ]);
+
+        Solusi::create($data);
+        return redirect()->route('solusi.index');
     }
 
     /**
@@ -44,7 +52,7 @@ class SolusiController extends Controller
      */
     public function edit(Solusi $solusi)
     {
-        //
+        return view('pages.admin.solusi.update', compact('solusi'));
     }
 
     /**
@@ -52,7 +60,14 @@ class SolusiController extends Controller
      */
     public function update(Request $request, Solusi $solusi)
     {
-        //
+        $data = $request->validate([
+            'kategori' => ['required', 'string'],
+            'solusi' => ['required', 'string'],
+            'bobot_kategori' => ['required', 'numeric'],
+        ]);
+
+        $solusi->update($data);
+        return redirect()->route('solusi.index');
     }
 
     /**
@@ -60,6 +75,7 @@ class SolusiController extends Controller
      */
     public function destroy(Solusi $solusi)
     {
-        //
+        $solusi->delete();
+        return redirect()->route('solusi.index');
     }
 }
