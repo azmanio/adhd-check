@@ -167,7 +167,6 @@
                         <span>Kelola User</span>
                     </li>
                 @elseif (str_contains(Route::currentRouteName(), 'user.'))
-                    {{-- @elseif (Route::currentRouteName() == 'user.create' || Route::currentRouteName() == 'user.edit') --}}
                     <li class="breadcrumb-item">
                         <a href="{{ route('user.index') }}">
                             <span>Kelola User</span>
@@ -182,7 +181,24 @@
                             <span>Ubah User</span>
                         </li>
                     @endif
-
+                @elseif (Route::currentRouteName() == 'kriteria.index')
+                    <li class="breadcrumb-item active">
+                        <span>Kelola Kriteria</span>
+                    </li>
+                @elseif (str_contains(Route::currentRouteName(), 'kriteria.'))
+                    <li class="breadcrumb-item">
+                        <a href="{{ route('kriteria.index') }}">
+                            <span>Kelola Kriteria</span>
+                        </a>
+                        @if (Route::currentRouteName() == 'kriteria.create')
+                    <li class="breadcrumb-item active">
+                        <span>Tambah Kriteria</span>
+                    </li>
+                @elseif(Route::currentRouteName() == 'kriteria.edit')
+                    <li class="breadcrumb-item active">
+                        <span>Ubah Kriteria</span>
+                    </li>
+                @endif
                 @endif
                 </li>
             </ol>

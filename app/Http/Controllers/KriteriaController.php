@@ -12,7 +12,8 @@ class KriteriaController extends Controller
      */
     public function index()
     {
-        //
+        $data = Kriteria::all();
+        return view('pages.admin.kriteria.index', compact('data'));
     }
 
     /**
@@ -20,7 +21,7 @@ class KriteriaController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.admin.kriteria.create');
     }
 
     /**
@@ -28,7 +29,15 @@ class KriteriaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'kode_kriteria' => ['required', 'string'],
+            'nama' => ['required', 'string'],
+            'deskripsi' => ['required', 'string'],
+            'bobot_prioritas' => ['nullable', 'double'],
+        ]);
+
+        Kriteria::create($data);
+        return redirect()->route('kriteria.index');
     }
 
     /**
@@ -42,24 +51,33 @@ class KriteriaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Kriteria $kriteria)
+    public function edit(Kriteria $kriterium)
     {
-        //
+        return view('pages.admin.kriteria.update', compact('kriterium'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Kriteria $kriteria)
+    public function update(Request $request, Kriteria $kriterium)
     {
-        //
+        $data = $request->validate([
+            'kode_kriteria' => ['required', 'string'],
+            'nama' => ['required', 'string'],
+            'deskripsi' => ['required', 'string'],
+            'bobot_prioritas' => ['nullable', 'double'],
+        ]);
+
+        $kriterium->update($data);
+        return redirect()->route('kriteria.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Kriteria $kriteria)
+    public function destroy(Kriteria $kriterium)
     {
-        //
+        $kriterium->delete();
+        return redirect()->route('kriteria.index');
     }
 }

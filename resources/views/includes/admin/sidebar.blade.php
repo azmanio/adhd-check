@@ -31,7 +31,7 @@
             </a>
             <ul class="nav-group-items compact">
                 <li class="nav-item">
-                    <a class="nav-link" href="base/accordion.html">
+                    <a class="nav-link" href="{{ route('kriteria.index') }}">
                         <i class="cil-stream"></i>
                         <span class="px-2">
                             Kriteria
