@@ -12,7 +12,8 @@ class RandomIndexController extends Controller
      */
     public function index()
     {
-        //
+        $data = RandomIndex::all();
+        return view('pages.admin.random_index.index', compact('data'));
     }
 
     /**
@@ -20,7 +21,7 @@ class RandomIndexController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.admin.random_index.create');
     }
 
     /**
@@ -28,7 +29,13 @@ class RandomIndexController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'jumlah_matriks' => ['required', 'numeric'],
+            'nilai' => ['required', 'numeric'],
+        ]);
+
+        RandomIndex::create($data);
+        return redirect()->route('random-index.index');
     }
 
     /**
@@ -44,7 +51,7 @@ class RandomIndexController extends Controller
      */
     public function edit(RandomIndex $randomIndex)
     {
-        //
+        return view('pages.admin.random_index.update', compact('randomIndex'));
     }
 
     /**
@@ -52,7 +59,13 @@ class RandomIndexController extends Controller
      */
     public function update(Request $request, RandomIndex $randomIndex)
     {
-        //
+        $data = $request->validate([
+            'jumlah_matriks' => ['required', 'numeric'],
+            'nilai' => ['required', 'numeric'],
+        ]);
+
+        $randomIndex->update($data);
+        return redirect()->route('random-index.index');
     }
 
     /**
@@ -60,6 +73,7 @@ class RandomIndexController extends Controller
      */
     public function destroy(RandomIndex $randomIndex)
     {
-        //
+        $randomIndex->delete();
+        return redirect()->route('random-index.index');
     }
 }

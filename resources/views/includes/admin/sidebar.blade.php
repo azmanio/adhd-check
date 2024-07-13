@@ -65,6 +65,15 @@
                         </span>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link @if (str_contains(Route::currentRouteName(), 'random-index.')) active @endif"
+                        href="{{ route('random-index.index') }}">
+                        <i class="cil-stream"></i>
+                        <span class="px-2">
+                            Random Index
+                        </span>
+                    </a>
+                </li>
             </ul>
         </li>
         <li class="nav-item">

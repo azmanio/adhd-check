@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class RandomIndex extends Model
 {
     use HasFactory;
+
+    protected $table = 'random_indexes';
+
+    protected $guarded = [];
 }
