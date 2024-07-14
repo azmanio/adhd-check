@@ -22,7 +22,7 @@ class User extends Authenticatable
         'password',
         'role',
         'image_path',
-        'no_hp'
+        'no_hp',
     ];
 
     /**
@@ -40,7 +40,7 @@ class User extends Authenticatable
      *
      * @return array<string, string>
      */
-    protected function casts(): array
+    protected function casts() : array
     {
         return [
             'email_verified_at' => 'datetime',

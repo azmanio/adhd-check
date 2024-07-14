@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Kriteria;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,8 +14,9 @@ return new class extends Migration {
         Schema::create('gejalas', function (Blueprint $table) {
             $table->id();
             $table->string('kode_gejala');
-            $table->string('nama');
+            $table->string('gejala');
             $table->double('bobot_prioritas')->nullable();
+            $table->foreignIdFor(Kriteria::class);
             $table->timestamps();
         });
     }
