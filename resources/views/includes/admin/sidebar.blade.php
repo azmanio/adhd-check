@@ -84,13 +84,14 @@
         </li>
         <li class="nav-title">Analisis Data</li>
         <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link @if (str_contains(Route::currentRouteName(), 'analisis-kriteria')) active @endif"
+                href="{{ route('analisis-kriteria.index') }}">
                 <i class="fas fa-balance-scale-right nav-icon"></i>
                 Perbandingan Kriteria
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link @if (str_contains(Route::currentRouteName(), 'random-index.')) active @endif" href="{{ route('rel-gejala.index') }}">
+            <a class="nav-link @if (str_contains(Route::currentRouteName(), 'analisis-gejala')) active @endif" href="{{ route('rel-gejala.index') }}">
                 <i class="fas fa-balance-scale-right nav-icon"></i>
                 Perbandingan Gejala
             </a>

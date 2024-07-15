@@ -41,7 +41,7 @@
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Kelola Data User</h1>
-            <a href="{{ route('user.create') }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+            <a href="{{ route('user.create') }}" class="d-sm-inline-block btn btn-sm btn-primary shadow-sm mt-2">
                 <i class="cil-user-plus icon"></i>
                 Tambah User
             </a>
@@ -71,7 +71,7 @@
                                             <img src="/storage/{{ $item->image_path }}" alt="Foto" style="height: 50px"
                                                 class="rounded-circle">
                                         @else
-                                            <img src="{{ asset('assets/img/user.png') }}" alt="Foto"
+                                            <img src="{{ asset('assets/admin/img/user.png') }}" alt="Foto"
                                                 style="height: 50px" class="rounded-circle">
                                         @endif
                                     </td>

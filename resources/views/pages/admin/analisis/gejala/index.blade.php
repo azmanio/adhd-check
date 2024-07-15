@@ -47,7 +47,6 @@
                 <p class="card-text">Silahkan pilih kriteria di bawah ini untuk memulai perbandingan gejala yang diinginkan.
                 </p>
                 <form action="{{ route('rel-gejala.index') }}" method="GET">
-                    @csrf
                     <div class="mb-3">
                         <select name="kriteria_id" id="kriteria_id" class="form-select" required
                             onchange="this.form.submit()">
@@ -90,10 +89,10 @@
                                             @for ($y = $x + 1; $y < count($gejalas); $y++)
                                                 @php
                                                     $urut++;
-                                                    $bobot_prioritas =
+                                                    $nilai =
                                                         \App\Models\RelGejala::where('gejala1', $gejalas[$x]->id)
                                                             ->where('gejala2', $gejalas[$y]->id)
-                                                            ->first()->bobot_prioritas ?? 1;
+                                                            ->first()->nilai ?? 1;
                                                 @endphp
 
                                                 <tr>
@@ -122,9 +121,9 @@
                                                     </td>
                                                     <td>
                                                         <div class="form-group">
-                                                            <input class="form-control text-cete" type="text"
+                                                            <input class="form-control" type="text"
                                                                 name="bobot{{ $urut }}"
-                                                                value="{{ $bobot_prioritas }}" required>
+                                                                value="{{ $nilai }}" required>
                                                         </div>
                                                     </td>
                                                 </tr>

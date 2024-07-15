@@ -40,7 +40,7 @@
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Kelola Data Gejala</h1>
-            <a href="{{ route('gejala.create') }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+            <a href="{{ route('gejala.create') }}" class="d-sm-inline-block btn btn-sm btn-primary shadow-sm mt-2">
                 <i class="cil-plus icon"></i>
                 Tambah Gejala
             </a>

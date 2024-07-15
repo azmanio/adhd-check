@@ -28,10 +28,10 @@
                     <a href="{{ route('dashboard') }}">Home</a>
                 </li>
                 <li class="breadcrumb-item">
-                    <a href="{{ route('rel-gejala.index') }}">Analisis Perbandingan Gejala</a>
+                    <a href="{{ route('analisis-kriteria.index') }}">Analisis Perbandingan Kriteria</a>
                 </li>
                 <li class="breadcrumb-item active">
-                    Hasil Analisis Perbandingan Gejala
+                    Hasil Analisis Perbandingan Kriteria
                 </li>
             </ol>
         </nav>
@@ -44,22 +44,22 @@
         <div class="card mb-4">
             <div class="card-body">
                 <div class="d-flex justify-content-center align-items-center mb-3">
-                    <h5 class="card-title">Matriks Perbandingan Gejala</h5>
+                    <h5 class="card-title">Matriks Perbandingan Kriteria</h5>
                 </div>
                 <div class="table-responsive text-nowrap">
                     <table class="table table-bordered text-center">
                         <thead class="table-light">
                             <tr>
-                                <th>Gejala</th>
-                                @foreach ($gejalas as $gejala)
-                                    <th>{{ $gejala->kode_gejala }}</th>
+                                <th>Kriteria</th>
+                                @foreach ($kriterias as $kriteria)
+                                    <th>{{ $kriteria->nama }}</th>
                                 @endforeach
                             </tr>
                         </thead>
                         <tbody>
                             @for ($x = 0; $x < $n; $x++)
                                 <tr>
-                                    <td>{{ $gejalas[$x]->kode_gejala }}</td>
+                                    <td>{{ $kriterias[$x]->nama }}</td>
                                     @for ($y = 0; $y < $n; $y++)
                                         <td>{{ number_format($matriks[$x][$y], 3) }}</td>
                                     @endfor
@@ -88,9 +88,9 @@
                     <table class="table table-bordered text-center">
                         <thead class="table-light">
                             <tr>
-                                <th>Gejala</th>
-                                @foreach ($gejalas as $gejala)
-                                    <th>{{ $gejala->kode_gejala }}</th>
+                                <th>Kriteria</th>
+                                @foreach ($kriterias as $kriteria)
+                                    <th>{{ $kriteria->nama }}</th>
                                 @endforeach
                                 <th>Jumlah</th>
                                 <th>Priority Vector</th>
@@ -99,7 +99,7 @@
                         <tbody>
                             @for ($x = 0; $x < $n; $x++)
                                 <tr>
-                                    <td>{{ $gejalas[$x]->kode_gejala }}</td>
+                                    <td>{{ $kriterias[$x]->nama }}</td>
                                     @for ($y = 0; $y < $n; $y++)
                                         <td>{{ number_format($matriksb[$x][$y], 3) }}</td>
                                     @endfor
@@ -119,6 +119,10 @@
                             </tr>
                             <tr class="table-light">
                                 <th colspan="{{ $n + 2 }}">Consistency Ratio</th>
+                                <th>{{ number_format($consRatio, 3) }} </th>
+                            </tr>
+                            <tr class="table-light">
+                                <th colspan="{{ $n + 2 }}">Persentase</th>
                                 <th>{{ number_format($consRatio * 100, 3) }} %</th>
                             </tr>
                         </tfoot>
@@ -134,7 +138,7 @@
                         <i class="bx bx-arrow-back"></i> Kembali
                     </a>
                 @else
-                    <a href="{{ route('rel-gejala.index') }}" class="btn btn-primary mt-4" style="float: right;">
+                    <a href="{{ route('analisis-kriteria.index') }}" class="btn btn-primary mt-4" style="float: right;">
                         Lanjut <i class="bx bx-arrow-right"></i>
                     </a>
                 @endif

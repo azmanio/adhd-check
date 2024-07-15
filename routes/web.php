@@ -5,8 +5,10 @@ use App\Http\Controllers\GejalaController;
 use App\Http\Controllers\KriteriaController;
 use App\Http\Controllers\RandomIndexController;
 use App\Http\Controllers\RelGejalaController;
+use App\Http\Controllers\RelKriteriaController;
 use App\Http\Controllers\SolusiController;
 use App\Http\Controllers\UserController;
+use App\Models\RelKriteria;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -35,6 +37,8 @@ Route::prefix('admin')->group(function () {
 
     Route::get('/analisis-gejala', [RelGejalaController::class, 'index'])->name('rel-gejala.index');
     Route::post('/analisis-gejala/store', [RelGejalaController::class, 'store'])->name('rel-gejala.store');
+
+    Route::resource('analisis-kriteria', RelKriteriaController::class);
 });
 
 
