@@ -36,7 +36,7 @@ class GejalaSeeder extends Seeder
             ],
             [
                 'kode_gejala' => 'G3',
-                'gejala' => '	Anak saya sering terlihat tidak mendengarkan ketika diajak bicara',
+                'gejala' => 'Anak saya sering terlihat tidak mendengarkan ketika diajak bicara',
                 'kriteria_id' => $kriteria1->id,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),

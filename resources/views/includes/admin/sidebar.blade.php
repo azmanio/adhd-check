@@ -90,7 +90,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link @if (str_contains(Route::currentRouteName(), 'random-index.')) active @endif" href="{{ route('rel-gejala.index') }}">
                 <i class="fas fa-balance-scale-right nav-icon"></i>
                 Perbandingan Gejala
             </a>
@@ -99,7 +99,6 @@
         <li class="nav-item">
             <a class="nav-link" href="#">
                 <i class="fas fa-stethoscope nav-icon"></i>
-                {{-- <i class="fas fa-diagnoses nav-icon"></i> --}}
                 Tes Diagnostik
             </a>
         </li>

@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GejalaController;
 use App\Http\Controllers\KriteriaController;
 use App\Http\Controllers\RandomIndexController;
+use App\Http\Controllers\RelGejalaController;
 use App\Http\Controllers\SolusiController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -31,6 +32,9 @@ Route::prefix('admin')->group(function () {
 
     Route::resource('/random-index', RandomIndexController::class);
     Route::get('/random-index/{random_index}/delete', [RandomIndexController::class, 'destroy'])->name('random-index.delete');
+
+    Route::get('/analisis-gejala', [RelGejalaController::class, 'index'])->name('rel-gejala.index');
+    Route::post('/analisis-gejala/store', [RelGejalaController::class, 'store'])->name('rel-gejala.store');
 });
 
 

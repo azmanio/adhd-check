@@ -66,10 +66,10 @@
                                     <td class="text-center">{{ $index + 1 }}</td>
                                     <td class="text-center">{{ $item->kode_kriteria }}</td>
                                     <td class="text-center">{{ $item->nama }}</td>
-                                    <td class="text-center">{{ $item->deskripsi }}</td>
+                                    <td>{{ $item->deskripsi }}</td>
                                     <td class="text-center">{{ $item->bobot_prioritas }}</td>
-                                    <td class="text-center d-flex flex-column d-md-block py-3">
-                                        <a class="btn btn-primary mb-1 mb-md-0" href="{{ route('kriteria.edit', $item) }}">
+                                    <td class="text-center d-flex flex-column d-md-block py-3" style="min-height: 10rem">
+                                        <a class="btn btn-primary mb-2" href="{{ route('kriteria.edit', $item) }}">
                                             <i class="cil-pen"></i>
                                         </a>
                                         <button class="btn btn-danger"
