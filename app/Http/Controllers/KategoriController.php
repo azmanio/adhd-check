@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Solusi;
+use App\Models\Kategori;
 use Illuminate\Http\Request;
 
-class SolusiController extends Controller
+class KategoriController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $data = Solusi::all();
+        $data = Kategori::all();
         return view('pages.admin.solusi.index', compact('data'));
     }
 
@@ -35,14 +35,14 @@ class SolusiController extends Controller
             'bobot_kategori' => ['required', 'numeric'],
         ]);
 
-        Solusi::create($data);
+        Kategori::create($data);
         return redirect()->route('solusi.index');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Solusi $solusi)
+    public function show(Kategori $solusi)
     {
         //
     }
@@ -50,7 +50,7 @@ class SolusiController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Solusi $solusi)
+    public function edit(Kategori $solusi)
     {
         return view('pages.admin.solusi.update', compact('solusi'));
     }
@@ -58,7 +58,7 @@ class SolusiController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Solusi $solusi)
+    public function update(Request $request, Kategori $solusi)
     {
         $data = $request->validate([
             'kategori' => ['required', 'string'],
@@ -73,7 +73,7 @@ class SolusiController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Solusi $solusi)
+    public function destroy(Kategori $solusi)
     {
         $solusi->delete();
         return redirect()->route('solusi.index');

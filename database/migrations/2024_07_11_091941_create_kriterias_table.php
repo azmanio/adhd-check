@@ -15,6 +15,7 @@ return new class extends Migration {
             $table->string('kode_kriteria');
             $table->string('nama');
             $table->text('deskripsi');
+            $table->text('solusi');
             $table->double('bobot_prioritas')->nullable();
             $table->timestamps();
         });
