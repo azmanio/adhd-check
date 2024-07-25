@@ -51,6 +51,10 @@
                         <label for="deskripsi" class="form-label">Deskripsi</label>
                         <textarea name="deskripsi" id="deskripsi" class="form-control" required></textarea>
                     </div>
+                    <div class="mb-3">
+                        <label for="solusi" class="form-label">Solusi</label>
+                        <textarea name="solusi" id="solusi" class="form-control" required></textarea>
+                    </div>
                     <button type="submit" class="btn btn-primary">Simpan</button>
                 </form>
             </div>

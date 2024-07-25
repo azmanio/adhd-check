@@ -119,6 +119,10 @@
                             </tr>
                             <tr class="table-light">
                                 <th colspan="{{ $n + 2 }}">Consistency Ratio</th>
+                                <th>{{ number_format($consRatio, 3) }} </th>
+                            </tr>
+                            <tr class="table-light">
+                                <th colspan="{{ $n + 2 }}">Persentase</th>
                                 <th>{{ number_format($consRatio * 100, 3) }} %</th>
                             </tr>
                         </tfoot>

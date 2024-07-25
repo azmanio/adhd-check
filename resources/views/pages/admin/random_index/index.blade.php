@@ -52,7 +52,6 @@
                     <table class="table align-middle" id="dataTable">
                         <thead>
                             <tr>
-                                <th class="text-center" scope="col">No</th>
                                 <th class="text-center" scope="col">Jumlah Matriks</th>
                                 <th class="text-center" scope="col">Nilai</th>
                                 <th class="text-center" scope="col" class="text-center">Aksi</th>
@@ -61,7 +60,6 @@
                         <tbody>
                             @foreach ($data as $index => $item)
                                 <tr>
-                                    <td class="text-center">{{ $index + 1 }}</td>
                                     <td class="text-center">{{ $item->jumlah_matriks }}</td>
                                     <td class="text-center">{{ $item->nilai }}</td>
                                     <td class="text-center d-flex flex-column d-md-block py-3">

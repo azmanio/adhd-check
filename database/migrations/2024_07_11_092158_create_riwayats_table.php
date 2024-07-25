@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\Gejala;
 use App\Models\Kriteria;
 use App\Models\Kategori;
 use App\Models\User;
@@ -19,11 +18,14 @@ return new class extends Migration {
             $table->string('nama_anak');
             $table->integer('umur_anak');
             $table->string('instansi');
-            $table->double('nilai_user')->nullable();
             $table->double('nilai_hasil')->nullable();
-            $table->foreignIdFor(User::class)->nullable();
+            $table->string('kategori_inattention')->nullable();
+            $table->string('kategori_hyperactive')->nullable();
+            $table->string('kategori_combined')->nullable();
+            $table->string('kriteria_dominan')->nullable();
+            $table->double('persentase_combined')->nullable();
+            $table->foreignIdFor(User::class);
             $table->foreignIdFor(Kriteria::class)->nullable();
-            $table->foreignIdFor(Gejala::class)->nullable();
             $table->foreignIdFor(Kategori::class)->nullable();
             $table->timestamps();
         });

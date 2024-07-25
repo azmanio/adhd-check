@@ -195,8 +195,8 @@ a:hover {
 }
 
 .btn-solid-lg:hover {
-    background-color: transparent;
-    color: #4555d2; /* needs to stay here because of the color property of a tag */
+    background-color: #3744a8;
+    color: #ffffff; /* needs to stay here because of the color property of a tag */
     text-decoration: none;
 }
 
@@ -446,7 +446,7 @@ a:hover {
     position: relative;
     overflow: hidden;
     padding-top: 8rem;
-    padding-bottom: 4em;
+    padding-bottom: 4sem;
     background-color: #ffffff;
     text-align: center;
 }
@@ -991,7 +991,6 @@ a:hover {
 @media (min-width: 768px) {
     /* Header */
     .header {
-        padding-top: 11rem;
         padding-bottom: 5em;
     }
 
@@ -1287,12 +1286,12 @@ a:hover {
 
     /* Header */
     .header {
-        padding-top: 12rem;
+        padding-top: 8rem;
         padding-bottom: 6rem;
     }
 
     .header .text-container {
-        margin-top: 6.5rem;
+        margin-top: 4rem;
     }
 
     .header .decoration-star {

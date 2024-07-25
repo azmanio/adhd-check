@@ -43,8 +43,8 @@
                         <input type="text" name="kode_gejala" class="form-control" id="kode_gejala" required autofocus>
                     </div>
                     <div class="mb-3">
-                        <label for="nama" class="form-label">Nama</label>
-                        <input type="text" name="nama" class="form-control" id="nama" required>
+                        <label for="gejala" class="form-label">Gejala</label>
+                        <input type="text" name="gejala" class="form-control" id="gejala" required>
                     </div>
                     <button type="submit" class="btn btn-primary">Simpan</button>
                 </form>

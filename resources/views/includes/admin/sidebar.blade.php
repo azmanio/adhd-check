@@ -49,19 +49,11 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link @if (str_contains(Route::currentRouteName(), 'solusi.')) active @endif"
-                        href="{{ route('solusi.index') }}">
+                    <a class="nav-link @if (str_contains(Route::currentRouteName(), 'kategori.')) active @endif"
+                        href="{{ route('kategori.index') }}">
                         <i class="cil-stream"></i>
                         <span class="px-2">
-                            Kategori & Solusi
-                        </span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="base/accordion.html">
-                        <i class="cil-stream"></i>
-                        <span class="px-2">
-                            Pertanyaan
+                            Kategori
                         </span>
                     </a>
                 </li>

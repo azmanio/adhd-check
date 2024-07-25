@@ -16,4 +16,9 @@ class Kriteria extends Model
     {
         return $this->hasMany(Gejala::class, 'kriteria_id');
     }
+
+    public function kategoris()
+    {
+        return $this->belongsTo(Kategori::class);
+    }
 }

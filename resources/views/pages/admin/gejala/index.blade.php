@@ -65,7 +65,7 @@
                                     <td class="text-center">{{ $index + 1 }}</td>
                                     <td class="text-center">{{ $item->kode_gejala }}</td>
                                     <td>{{ $item->gejala }}</td>
-                                    <td class="text-center">{{ $item->bobot_prioritas }}</td>
+                                    <td class="text-center">{{ number_format($item->bobot_prioritas, 3) }}</td>
                                     <td class="text-center d-flex flex-column d-md-block py-3">
                                         <a class="btn btn-primary mb-2 mb-md-2" href="{{ route('gejala.edit', $item) }}">
                                             <i class="cil-pen"></i>

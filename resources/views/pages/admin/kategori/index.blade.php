@@ -28,7 +28,7 @@
                     <a href="{{ route('dashboard') }}">Home</a>
                 </li>
                 <li class="breadcrumb-item active">
-                    Kelola Kategori & Solusi
+                    Kelola Kategori
                 </li>
             </ol>
         </nav>
@@ -39,10 +39,10 @@
     <div class="container-fluid">
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Kelola Data Kategori & Solusi</h1>
-            <a href="{{ route('solusi.create') }}" class="d-sm-inline-block btn btn-sm btn-primary shadow-sm mt-2">
+            <h1 class="h3 mb-0 text-gray-800">Kelola Data Kategori</h1>
+            <a href="{{ route('kategori.create') }}" class="d-sm-inline-block btn btn-sm btn-primary shadow-sm mt-2">
                 <i class="cil-plus icon"></i>
-                Tambah Kategori & Solusi
+                Tambah Kategori
             </a>
         </div>
 
@@ -51,11 +51,13 @@
                 <div class="table-responsive">
                     <table class="table align-middle" id="dataTable">
                         <thead>
-                            <tr>
+                            <tr class="align-middle">
                                 <th class="text-center" scope="col">No</th>
                                 <th class="text-center" scope="col">Kategori</th>
-                                <th class="text-center" scope="col">Solusi</th>
-                                <th class="text-center" scope="col">Bobot Kategori</th>
+                                <th class="text-center" scope="col">Keterangan</th>
+                                <th class="text-center" scope="col">Range Min (Gejala)</th>
+                                <th class="text-center" scope="col">Range Maks (Gejala)</th>
+                                <th class="text-center" scope="col">Kriteria</th>
                                 <th class="text-center" scope="col" class="text-center">Aksi</th>
                             </tr>
                         </thead>
@@ -64,14 +66,16 @@
                                 <tr>
                                     <td class="text-center">{{ $index + 1 }}</td>
                                     <td class="text-center">{{ $item->kategori }}</td>
-                                    <td class="text-center">{{ $item->solusi }}</td>
-                                    <td class="text-center">{{ $item->bobot_kategori }}</td>
+                                    <td class="text-center">{{ $item->keterangan }}</td>
+                                    <td class="text-center">{{ $item->range_min }}</td>
+                                    <td class="text-center">{{ $item->range_max }}</td>
+                                    <td class="text-center">{{ $item->kriteria->nama }}</td>
                                     <td class="text-center d-flex flex-column d-md-block py-3">
-                                        <a class="btn btn-primary mb-1 mb-md-0" href="{{ route('solusi.edit', $item) }}">
+                                        <a class="btn btn-primary mb-1 mb-md-0" href="{{ route('kategori.edit', $item) }}">
                                             <i class="cil-pen"></i>
                                         </a>
                                         <button class="btn btn-danger"
-                                            onclick="delete_confirm('{{ route('solusi.delete', $item) }}')">
+                                            onclick="delete_confirm('{{ route('kategori.delete', $item) }}')">
                                             <i class="cil-trash"></i>
                                         </button>
                                     </td>

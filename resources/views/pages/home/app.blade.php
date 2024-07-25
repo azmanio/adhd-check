@@ -7,18 +7,17 @@
         <img class="decoration-star-2" src="assets/img/decoration-star.svg" alt="alternative">
         <div class="container">
             <div class="row">
-                <div class="col-lg-7 col-xl-5">
+                <div class="col-lg-7 col-xl-6">
                     <div class="text-container">
-                        <h1 class="h1-large">Beautifying office spaces</h1>
-                        <p class="p-large">Is education residence conveying and sore. Suppose shyness say ten behaved
-                            morning had. Any propose assist compliment occasional too reasonably</p>
-                        <a class="btn-solid-lg" href="#introduction">More details</a>
-                        <a class="btn-outline-lg" href="#contact">Contact us</a>
+                        <h1 class="h1-large">Sistem Pakar Diagnosis ADHD</h1>
+                        <p class="p-large">Sistem Pakar Diagnosis ADHD pada Anak - Identifikasi dan Evaluasi Gejala ADHD
+                            dengan Akurat dan Mudah.<br>Cek Sekarang untuk Penanganan Tepat</p>
+                        <a class="btn-solid-lg" href="{{ route('form-identitas') }}">Diagnosis Sekarang</a>
                     </div>
                 </div>
-                <div class="col-lg-5 col-xl-7">
+                <div class="col-lg-5 col-xl-6">
                     <div class="image-container">
-                        <img class="img-fluid" src="assets/img/header.png" alt="alternative">
+                        <img class="img-fluid" src="{{ asset('assets/img/header.png') }}" alt="ADHD">
                     </div>
                 </div>
             </div>

@@ -26,7 +26,8 @@
                                     <span class="input-group-text">
                                         <i class="far fa-envelope"></i>
                                     </span>
-                                    <input class="form-control" type="text" placeholder="Email" name="email">
+                                    <input class="form-control" type="text" placeholder="Email" name="email"
+                                        value="{{ old('email') }}">
                                 </div>
                                 <div class="input-group mb-3">
                                     <span class="input-group-text">

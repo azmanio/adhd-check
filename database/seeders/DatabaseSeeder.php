@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             KriteriaSeeder::class,
             GejalaSeeder::class,
             RandomIndexSeeder::class,
+            KategoriSeeder::class,
         ]);
     }
 }

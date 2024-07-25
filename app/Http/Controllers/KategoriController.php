@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kategori;
+use App\Models\Kriteria;
 use Illuminate\Http\Request;
 
 class KategoriController extends Controller
@@ -12,8 +13,8 @@ class KategoriController extends Controller
      */
     public function index()
     {
-        $data = Kategori::all();
-        return view('pages.admin.solusi.index', compact('data'));
+        $data = Kategori::with('kriteria')->get();
+        return view('pages.admin.kategori.index', compact('data'));
     }
 
     /**
@@ -21,7 +22,8 @@ class KategoriController extends Controller
      */
     public function create()
     {
-        return view('pages.admin.solusi.create');
+        $kriterias = Kriteria::all();
+        return view('pages.admin.kategori.create', compact('kriterias'));
     }
 
     /**
@@ -31,18 +33,20 @@ class KategoriController extends Controller
     {
         $data = $request->validate([
             'kategori' => ['required', 'string'],
-            'solusi' => ['required', 'string'],
-            'bobot_kategori' => ['required', 'numeric'],
+            'keterangan' => ['required', 'string'],
+            'range_min' => ['required', 'integer'],
+            'range_max' => ['required', 'integer'],
+            'kriteria_id' => ['required', 'exists:kriterias,id'],
         ]);
 
         Kategori::create($data);
-        return redirect()->route('solusi.index');
+        return redirect()->route('kategori.index');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Kategori $solusi)
+    public function show(Kategori $kategori)
     {
         //
     }
@@ -50,32 +54,35 @@ class KategoriController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Kategori $solusi)
+    public function edit(Kategori $kategori)
     {
-        return view('pages.admin.solusi.update', compact('solusi'));
+        $kriterias = Kriteria::all();
+        return view('pages.admin.kategori.update', compact('kategori'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Kategori $solusi)
+    public function update(Request $request, Kategori $kategori)
     {
         $data = $request->validate([
             'kategori' => ['required', 'string'],
-            'solusi' => ['required', 'string'],
-            'bobot_kategori' => ['required', 'numeric'],
+            'keterangan' => ['required', 'string'],
+            'range_min' => ['required', 'integer'],
+            'range_max' => ['required', 'integer'],
+            'kriteria_id' => ['required', 'exists:kriterias,id'],
         ]);
 
-        $solusi->update($data);
-        return redirect()->route('solusi.index');
+        $kategori->update($data);
+        return redirect()->route('kategori.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Kategori $solusi)
+    public function destroy(Kategori $kategori)
     {
-        $solusi->delete();
-        return redirect()->route('solusi.index');
+        $kategori->delete();
+        return redirect()->route('kategori.index');
     }
 }
