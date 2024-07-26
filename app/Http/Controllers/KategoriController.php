@@ -34,8 +34,8 @@ class KategoriController extends Controller
         $data = $request->validate([
             'kategori' => ['required', 'string'],
             'keterangan' => ['required', 'string'],
-            'range_min' => ['required', 'integer'],
-            'range_max' => ['required', 'integer'],
+            'range_min' => ['required', 'numeric'],
+            'range_max' => ['required', 'numeric'],
             'kriteria_id' => ['required', 'exists:kriterias,id'],
         ]);
 
@@ -57,7 +57,7 @@ class KategoriController extends Controller
     public function edit(Kategori $kategori)
     {
         $kriterias = Kriteria::all();
-        return view('pages.admin.kategori.update', compact('kategori'));
+        return view('pages.admin.kategori.update', compact('kategori', 'kriterias'));
     }
 
     /**
@@ -68,8 +68,8 @@ class KategoriController extends Controller
         $data = $request->validate([
             'kategori' => ['required', 'string'],
             'keterangan' => ['required', 'string'],
-            'range_min' => ['required', 'integer'],
-            'range_max' => ['required', 'integer'],
+            'range_min' => ['required', 'numeric'],
+            'range_max' => ['required', 'numeric'],
             'kriteria_id' => ['required', 'exists:kriterias,id'],
         ]);
 

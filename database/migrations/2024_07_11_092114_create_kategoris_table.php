@@ -15,8 +15,8 @@ return new class extends Migration {
             $table->id();
             $table->string('kategori');
             $table->text('keterangan');
-            $table->integer('range_min');
-            $table->integer('range_max');
+            $table->double('range_min');
+            $table->double('range_max');
             $table->foreignIdFor(Kriteria::class);
             $table->timestamps();
         });

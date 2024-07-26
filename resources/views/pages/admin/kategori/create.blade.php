@@ -47,12 +47,12 @@
                         <input type="text" name="keterangan" class="form-control" id="keterangan" required>
                     </div>
                     <div class="mb-3">
-                        <label for="range_min" class="form-label">Range Min</label>
-                        <input type="number" class="form-control" id="range_min" name="range_min" required>
+                        <label for="range_min" class="form-label">Range Minimal</label>
+                        <input type="number" class="form-control" id="range_min" name="range_min" step="0.1" required>
                     </div>
                     <div class="mb-3">
-                        <label for="range_max" class="form-label">Range Max</label>
-                        <input type="number" class="form-control" id="range_max" name="range_max" required>
+                        <label for="range_max" class="form-label">Range Maximal</label>
+                        <input type="number" class="form-control" step="0.1" id="range_max" name="range_max" required>
                     </div>
                     <div class="mb-3">
                         <label for="kriteria_id" class="form-label">Kriteria</label>

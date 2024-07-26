@@ -47,15 +47,29 @@
                                 value="{{ old('kategori') ?? $kategori->kategori }}" required>
                         </div>
                         <div class="mb-3">
-                            <label for="kategori" class="form-label">Solusi</label>
-                            <input type="text" name="kategori" class="form-control" id="kategori"
-                                value="{{ old('kategori') ?? $kategori->kategori }}" required>
+                            <label for="keterangan" class="form-label">Keterangan</label>
+                            <input type="text" name="keterangan" class="form-control" id="keterangan"
+                                value="{{ old('keterangan') ?? $kategori->keterangan }}" required>
                         </div>
                         <div class="mb-3">
-                            <label for="bobot_kategori" class="form-label">Solusi</label>
-                            <input type="number" step="0.01" name="bobot_kategori" class="form-control"
-                                id="bobot_kategori" value="{{ old('bobot_kategori') ?? $kategori->bobot_kategori }}"
-                                required>
+                            <label for="range_min" class="form-label">Range Minimal</label>
+                            <input type="number" step="0.1" name="range_min" class="form-control" id="range_min"
+                                value="{{ old('range_min') ?? $kategori->range_min }}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="range_max" class="form-label">Range Maksimal</label>
+                            <input type="number" step="0.1" name="range_max" class="form-control" id="range_max"
+                                value="{{ old('range_max') ?? $kategori->range_max }}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="kriteria_id" class="form-label">Kriteria</label>
+                            <select name="kriteria_id" id="kriteria_id" class="form-select" required>
+                                <option value="" disabled>-- Pilih Kriteria --</option>
+                                @foreach ($kriterias as $item)
+                                    <option {{ $item->id == $kategori->kriteria_id ? 'selected' : '' }}
+                                        value="{{ $item->id }}">{{ $item->nama }}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <button type="submit" class="btn btn-primary">Ubah</button>
                 </form>
