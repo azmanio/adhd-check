@@ -57,7 +57,6 @@
                                 <th class="text-center" scope="col">Keterangan</th>
                                 <th class="text-center" scope="col">Range Min</th>
                                 <th class="text-center" scope="col">Range Maks</th>
-                                <th class="text-center" scope="col">Kriteria</th>
                                 <th class="text-center" scope="col" class="text-center">Aksi</th>
                             </tr>
                         </thead>
@@ -69,7 +68,6 @@
                                     <td class="text-center">{{ $item->keterangan }}</td>
                                     <td class="text-center">{{ $item->range_min }}</td>
                                     <td class="text-center">{{ $item->range_max }}</td>
-                                    <td class="text-center">{{ $item->kriteria->nama }}</td>
                                     <td class="text-center d-flex flex-column d-md-block py-3">
                                         <a class="btn btn-primary mb-1 mb-md-2" href="{{ route('kategori.edit', $item) }}">
                                             <i class="cil-pen"></i>
