@@ -74,7 +74,7 @@
                             <input type="hidden" name="kriteria_id" value="{{ $selectedKriteria }}">
                             <div class="table-responsive">
                                 <table class="table table-bordered table-hover">
-                                    <thead class="table-light">
+                                    <thead>
                                         <tr>
                                             <th colspan="2" class="text-center">Pilih yang lebih penting</th>
                                             <th class="text-center">Nilai perbandingan</th>
@@ -121,8 +121,8 @@
                                                     </td>
                                                     <td>
                                                         <div class="form-group">
-                                                            <input class="form-control" type="text"
-                                                                name="bobot{{ $urut }}"
+                                                            <input class="form-control" type="number" min="1"
+                                                                max="9" name="bobot{{ $urut }}"
                                                                 value="{{ $nilai }}" required>
                                                         </div>
                                                     </td>

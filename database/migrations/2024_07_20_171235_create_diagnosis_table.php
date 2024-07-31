@@ -19,7 +19,6 @@ return new class extends Migration {
             $table->foreignIdFor(Riwayat::class)->nullable();
             $table->foreignIdFor(Kriteria::class)->nullable();
             $table->foreignIdFor(Gejala::class)->nullable();
-            $table->foreignIdFor(Kategori::class)->nullable();
             $table->double('nilai_user')->nullable();
             $table->double('nilai_hasil')->nullable();
             $table->timestamps();

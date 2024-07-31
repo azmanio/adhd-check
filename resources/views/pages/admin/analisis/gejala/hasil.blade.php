@@ -48,7 +48,7 @@
                 </div>
                 <div class="table-responsive text-nowrap">
                     <table class="table table-bordered text-center">
-                        <thead class="table-light">
+                        <thead>
                             <tr>
                                 <th>Gejala</th>
                                 @foreach ($gejalas as $gejala)
@@ -67,7 +67,7 @@
                             @endfor
                         </tbody>
                         <tfoot>
-                            <tr class="table-light">
+                            <tr>
                                 <th>Jumlah</th>
                                 @for ($i = 0; $i < $n; $i++)
                                     <th>{{ number_format($jmlmpb[$i], 3) }}</th>
@@ -86,7 +86,7 @@
 
                 <div class="table-responsive text-nowrap">
                     <table class="table table-bordered text-center">
-                        <thead class="table-light">
+                        <thead>
                             <tr>
                                 <th>Gejala</th>
                                 @foreach ($gejalas as $gejala)
@@ -109,19 +109,19 @@
                             @endfor
                         </tbody>
                         <tfoot>
-                            <tr class="table-light">
+                            <tr>
                                 <th colspan="{{ $n + 2 }}">Principe Eigen Vector (λ maks)</th>
                                 <th>{{ number_format($eigenvektor, 3) }}</th>
                             </tr>
-                            <tr class="table-light">
+                            <tr>
                                 <th colspan="{{ $n + 2 }}">Consistency Index</th>
                                 <th>{{ number_format($consIndex, 3) }}</th>
                             </tr>
-                            <tr class="table-light">
+                            <tr>
                                 <th colspan="{{ $n + 2 }}">Consistency Ratio</th>
                                 <th>{{ number_format($consRatio, 3) }} </th>
                             </tr>
-                            <tr class="table-light">
+                            <tr>
                                 <th colspan="{{ $n + 2 }}">Persentase</th>
                                 <th>{{ number_format($consRatio * 100, 3) }} %</th>
                             </tr>

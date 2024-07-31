@@ -19,14 +19,12 @@ return new class extends Migration {
             $table->integer('umur_anak');
             $table->string('instansi');
             $table->double('nilai_hasil')->nullable();
-            $table->string('kategori_inattention')->nullable();
-            $table->string('kategori_hyperactive')->nullable();
-            $table->string('kategori_combined')->nullable();
             $table->string('kriteria_dominan')->nullable();
+            $table->double('nilai_combined')->nullable();
             $table->double('persentase_combined')->nullable();
+            $table->string('kategori')->nullable();
             $table->foreignIdFor(User::class);
             $table->foreignIdFor(Kriteria::class)->nullable();
-            $table->foreignIdFor(Kategori::class)->nullable();
             $table->timestamps();
         });
     }

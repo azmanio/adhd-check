@@ -7,6 +7,7 @@ use App\Models\Gejala;
 use App\Models\Kategori;
 use App\Models\Kriteria;
 use App\Models\Riwayat;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -102,8 +103,9 @@ class DiagnosisController extends Controller
         // Hitung P(Hi|E) dan hasil diagnosis untuk setiap kriteria
         $hasil_diagnosis = [];
         foreach ($nilai_semesta as $kriteria => $nilai_sementara) {
+            $total_sementara = $total_sementaras[$kriteria];
             foreach ($nilai_sementara as $id => $nilai) {
-                $PHiE = ($total_sementaras[$kriteria] != 0) ? $nilai / $total_sementaras[$kriteria] : 0;
+                $PHiE = ($total_sementara != 0) ? $nilai * $nilai_user[$kriteria][$id] / $total_sementara : 0;
                 $hasil_diagnosis[$kriteria][$id] = $PHiE * $nilai_pakars[$kriteria][$id];
             }
         }
@@ -119,84 +121,101 @@ class DiagnosisController extends Controller
             }
         }
 
-        // Simpan total_pakar dan total_sementara ke session untuk digunakan di view
-        session()->put('total_pakar', $total_pakar);
-        session()->put('total_sementaras', $total_sementaras);
-
         return $this->kategoriHasil($request);
     }
 
     public function kategoriHasil(Request $request)
     {
-        $nilai_inattention = 0;
-        $nilai_hyperactive = 0;
+        $total_nilai_user = 0;
+        $nilai_kriteria = [];
+        $riwayat_id = $request->input('riwayat_id');
+        $diagnosis = Diagnosis::where('riwayat_id', $riwayat_id)->get();
 
-        $diagnosis = Diagnosis::where('riwayat_id', $request->input('riwayat_id'))->get();
-
+        // Hitung total nilai user dan nilai per kriteria
         foreach ($diagnosis as $item) {
-            $gejala = Gejala::with('kriteria')->find($item->gejala_id);
+            $total_nilai_user += $item->nilai_user;
 
-            if ($gejala->kriteria->kode_kriteria == 'AD') { // Kriteria Inattention
-                $nilai_inattention += $item->nilai_user;
-            } elseif ($gejala->kriteria->kode_kriteria == 'HD') { // Kriteria Hyperactive-Impulsive
-                $nilai_hyperactive += $item->nilai_user;
+            if (!isset($nilai_kriteria[$item->kriteria_id])) {
+                $nilai_kriteria[$item->kriteria_id] = 0;
             }
+            $nilai_kriteria[$item->kriteria_id] += $item->nilai_hasil;
         }
 
-        // Tentukan kategori inattention berdasarkan tabel kategori
-        $kategori_inattention = $this->getKategori($nilai_inattention, 'AD');
+        $nilai_combined = array_sum($nilai_kriteria);
 
-        // Tentukan kategori hyperactive-impulsive berdasarkan tabel kategori
-        $kategori_hyperactive = $this->getKategori($nilai_hyperactive, 'HD');
+        arsort($nilai_kriteria);
+        $kriteria_dominan_id = key($nilai_kriteria);
+        $kriteria_dominan = Kriteria::find($kriteria_dominan_id);
+        $kriteria_dominan_nama = $kriteria_dominan->nama;
 
-        // Hitung nilai combined
-        $nilai_combined = $nilai_inattention + $nilai_hyperactive;
+        $kategori = Kategori::where('range_min', '<=', $total_nilai_user)->where('range_max', '>=', $total_nilai_user)->value('kategori');
 
-        // Tentukan kategori combined berdasarkan tabel kategori
-        $kategori_combined = $this->getKategori($nilai_combined, 'ADHD');
+        $total_gejala = Gejala::count();
+        $persentase_combined = ($total_nilai_user / $total_gejala) * 100;
 
-        // Tentukan kriteria dominan
-        $kriteria_dominan = $this->getKriteriaDominan($nilai_inattention, $nilai_hyperactive);
+        $nilai_hasil_max = max($nilai_kriteria);
 
-        // Hitung persentase combined
-        $total_gejala = Gejala::count(); // Total gejala dari database
-        $persentase_combined = ($nilai_combined / $total_gejala) * 100;
+        // Simpan nilai kriteria dan deskripsi ke session
+        $nilai_akhir_kriteria = [];
+        $deskripsi_kriteria = [];
+
+        foreach ($nilai_kriteria as $kriteria_id => $nilai) {
+            $kriteria = Kriteria::find($kriteria_id);
+            $nilai_akhir_kriteria[$kriteria->nama] = $nilai;
+            $deskripsi_kriteria[$kriteria->nama] = $kriteria->deskripsi;
+        }
+
+        session()->put([
+            'nilai_akhir_kriteria' => $nilai_akhir_kriteria,
+            'deskripsi_kriteria' => $deskripsi_kriteria,
+        ]);
 
         // Simpan hasil diagnosis ke database
-        Riwayat::where('id', $request->input('riwayat_id'))->update([
-            'kategori_inattention' => $kategori_inattention,
-            'kategori_hyperactive' => $kategori_hyperactive,
-            'kategori_combined' => $kategori_combined,
-            'kriteria_dominan' => $kriteria_dominan,
+        Riwayat::where('id', $riwayat_id)->update([
+            'nilai_hasil' => $nilai_hasil_max,
+            'kriteria_dominan' => $kriteria_dominan_nama,
+            'nilai_combined' => $nilai_combined,
             'persentase_combined' => $persentase_combined,
-            'nilai_hasil' => max($nilai_inattention, $nilai_hyperactive),
+            'kategori' => $kategori,
+            'kriteria_id' => Kriteria::where('nama', $kriteria_dominan_nama)->value('id'),
         ]);
 
         // Redirect ke halaman hasil diagnosis
-        return redirect()->route('hasil-diagnosis');
+        return redirect()->route('hasil-diagnosis', ['riwayat_id' => $riwayat_id]);
     }
 
-    private function getKategori($nilai, $kode_kriteria)
+    public function hasilDiagnosis($riwayat_id)
     {
-        $kriteria_id = Kriteria::where('kode_kriteria', $kode_kriteria)->value('id');
-        $kategori = Kategori::where('kriteria_id', $kriteria_id)
-            ->where('range_min', '<=', $nilai)
-            ->where('range_max', '>=', $nilai)
-            ->first();
-        return $kategori ? $kategori->kategori : 'Tidak Diketahui';
+        $user_id = Auth::id();
+
+        $riwayat = Riwayat::where('id', $riwayat_id)
+            ->where('user_id', $user_id)
+            ->firstOrFail();
+
+        // Ambil nilai kriteria dan deskripsi dari session
+        $nilai_akhir_kriteria = session()->get('nilai_akhir_kriteria', []);
+        $deskripsi_kriteria = session()->get('deskripsi_kriteria', []);
+
+        return view('pages.home.diagnosis.hasil', compact('riwayat', 'nilai_akhir_kriteria', 'deskripsi_kriteria'));
     }
 
-    private function getKriteriaDominan($nilai_inattention, $nilai_hyperactive)
+    public function cetakPdf($riwayat_id)
     {
-        $kriteria_inattention = Kriteria::where('kode_kriteria', 'AD')->first();
-        $kriteria_hyperactive = Kriteria::where('kode_kriteria', 'HD')->first();
+        $user_id = Auth::id();
 
-        if ($nilai_inattention > $nilai_hyperactive) {
-            return $kriteria_inattention->nama ?? 'Tidak Diketahui';
-        } elseif ($nilai_hyperactive > $nilai_inattention) {
-            return $kriteria_hyperactive->nama ?? 'Tidak Diketahui';
-        } else {
-            return 'Seimbang';
-        }
+        $riwayat = Riwayat::where('id', $riwayat_id)
+            ->where('user_id', $user_id)
+            ->firstOrFail();
+
+        $nilai_akhir_kriteria = session('nilai_akhir_kriteria', []);
+        $deskripsi_kriteria = session('deskripsi_kriteria', []);
+
+        $pdf = PDF::loadView('pages.home.diagnosis.cetak', compact('riwayat', 'nilai_akhir_kriteria', 'deskripsi_kriteria'));
+
+        // Format nama file PDF
+        $fileName = 'Hasil_Diagnosis_' . str_replace(' ', '_', $riwayat->nama_anak) . '.pdf';
+
+        return $pdf->download($fileName);
     }
+
 }

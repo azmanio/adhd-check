@@ -24,7 +24,7 @@ class KriteriaSeeder extends Seeder
                 'updated_at' => Carbon::now(),
             ],
             [
-                'nama' => 'Hyperactive-Impulsive',
+                'nama' => 'Hyperactive',
                 'kode_kriteria' => 'HD',
                 'deskripsi' => 'Anak memenuhi kriteria hiperaktif-impulsif (hyperactive/impulsive) namun tidak memenuhi kriteria gangguan pemusatan perhatian (inattention). Setidaknya 6 (atau lebih) gejala dari kriteria ini telah berlangsung ke tingkat yang mengganggu dan tidak pantas untuk tingkat perkembangan seseorang dalam 6 bulan terakhir.',
                 'solusi' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel numquam neque praesentium deserunt accusantium fugit ex quasi dignissimos laborum odit.',
@@ -32,9 +32,9 @@ class KriteriaSeeder extends Seeder
                 'updated_at' => Carbon::now(),
             ],
             [
-                'nama' => 'Combined',
-                'kode_kriteria' => 'ADHD',
-                'deskripsi' => 'Anak memenuhi kriteria baik gangguan pemusatan perhatian (inattention) dan hiperaktif-impulsif (hyperactive/impulsive) dalam 6 bulan terakhir.',
+                'nama' => 'Impulsive',
+                'kode_kriteria' => 'IM',
+                'deskripsi' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel numquam neque praesentium deserunt accusantium fugit ex quasi dignissimos laborum odit.',
                 'solusi' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel numquam neque praesentium deserunt accusantium fugit ex quasi dignissimos laborum odit.',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),

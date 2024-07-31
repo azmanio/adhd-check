@@ -52,7 +52,7 @@
                     @csrf
                     <div class="table-responsive">
                         <table class="table table-bordered table-hover">
-                            <thead class="table-light">
+                            <thead class="text-center">
                                 <tr>
                                     <th colspan="2">Pilih yang lebih penting</th>
                                     <th>Nilai perbandingan</th>
@@ -96,7 +96,7 @@
                                             </td>
                                             <td>
                                                 <div class="form-group">
-                                                    <input class="form-control" type="text"
+                                                    <input class="form-control" type="number" min="1" max="9"
                                                         name="bobot{{ $urut }}" value="{{ $nilai }}"
                                                         required>
                                                 </div>
