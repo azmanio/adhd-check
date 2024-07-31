@@ -83,11 +83,11 @@ class DiagnosisController extends Controller
                 $total_pakar[$kriteria] = 0;
             }
 
-            $nilai_pakars[$kriteria][$gejala->id] = $gejala->bobot_prioritas;
+            $nilai_pakars[$kriteria][$gejala->id] = $gejala->nilai_pakar;
 
             $nilai_user[$kriteria][$gejala->id] = $request->input('gejalas')[$gejala->id];
 
-            $total_pakar[$kriteria] += $gejala->bobot_prioritas;
+            $total_pakar[$kriteria] += $gejala->nilai_pakar;
         }
 
         // Hitung nilai semesta P(Hi) dan ΣHi P(E|Hi) * P(Hi) untuk setiap kriteria
@@ -148,7 +148,9 @@ class DiagnosisController extends Controller
         $kriteria_dominan = Kriteria::find($kriteria_dominan_id);
         $kriteria_dominan_nama = $kriteria_dominan->nama;
 
-        $kategori = Kategori::where('range_min', '<=', $total_nilai_user)->where('range_max', '>=', $total_nilai_user)->value('kategori');
+        $kategoris = Kategori::where('range_min', '<=', $total_nilai_user)->where('range_max', '>=', $total_nilai_user)->first();
+        $kategori = $kategoris->kategori;
+        $keterangan_kategori = $kategoris->keterangan;
 
         $total_gejala = Gejala::count();
         $persentase_combined = ($total_nilai_user / $total_gejala) * 100;
@@ -165,10 +167,9 @@ class DiagnosisController extends Controller
             $deskripsi_kriteria[$kriteria->nama] = $kriteria->deskripsi;
         }
 
-        session()->put([
-            'nilai_akhir_kriteria' => $nilai_akhir_kriteria,
-            'deskripsi_kriteria' => $deskripsi_kriteria,
-        ]);
+        session()->put('nilai_akhir_kriteria', $nilai_akhir_kriteria);
+        session()->put('deskripsi_kriteria', $deskripsi_kriteria);
+        session()->put('keterangan_kategori', $keterangan_kategori);
 
         // Simpan hasil diagnosis ke database
         Riwayat::where('id', $riwayat_id)->update([
@@ -178,6 +179,7 @@ class DiagnosisController extends Controller
             'persentase_combined' => $persentase_combined,
             'kategori' => $kategori,
             'kriteria_id' => Kriteria::where('nama', $kriteria_dominan_nama)->value('id'),
+            'kategori_id' => $kategoris->id,
         ]);
 
         // Redirect ke halaman hasil diagnosis
@@ -193,10 +195,11 @@ class DiagnosisController extends Controller
             ->firstOrFail();
 
         // Ambil nilai kriteria dan deskripsi dari session
-        $nilai_akhir_kriteria = session()->get('nilai_akhir_kriteria', []);
-        $deskripsi_kriteria = session()->get('deskripsi_kriteria', []);
+        $nilai_akhir_kriteria = session()->get('nilai_akhir_kriteria');
+        $deskripsi_kriteria = session()->get('deskripsi_kriteria');
+        $keterangan_kategori = session()->get('keterangan_kategori');
 
-        return view('pages.home.diagnosis.hasil', compact('riwayat', 'nilai_akhir_kriteria', 'deskripsi_kriteria'));
+        return view('pages.home.diagnosis.hasil', compact('riwayat', 'nilai_akhir_kriteria', 'deskripsi_kriteria', 'keterangan_kategori'));
     }
 
     public function cetakPdf($riwayat_id)
@@ -207,8 +210,8 @@ class DiagnosisController extends Controller
             ->where('user_id', $user_id)
             ->firstOrFail();
 
-        $nilai_akhir_kriteria = session('nilai_akhir_kriteria', []);
-        $deskripsi_kriteria = session('deskripsi_kriteria', []);
+        $nilai_akhir_kriteria = session()->get('nilai_akhir_kriteria');
+        $deskripsi_kriteria = session()->get('deskripsi_kriteria');
 
         $pdf = PDF::loadView('pages.home.diagnosis.cetak', compact('riwayat', 'nilai_akhir_kriteria', 'deskripsi_kriteria'));
 

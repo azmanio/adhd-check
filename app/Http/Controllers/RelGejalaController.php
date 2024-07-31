@@ -98,6 +98,14 @@ class RelGejalaController extends Controller
             $gejalas[$x]->update(['bobot_prioritas' => $pv[$x]]);
         }
 
+        foreach ($gejalas as $gejala) {
+            $kriteria = $gejala->kriteria;
+            if ($kriteria && $kriteria->bobot_prioritas) {
+                $gejala->nilai_pakar = $gejala->bobot_prioritas * $kriteria->bobot_prioritas;
+                $gejala->save();
+            }
+        }
+
         // cek konsistensi
         $eigenvektor = $this->getEigenVector($jmlmpb, $jmlmnk, $n);
         $consIndex = $this->getConsIndex($jmlmpb, $jmlmnk, $n);

@@ -97,8 +97,8 @@
                                             <td>
                                                 <div class="form-group">
                                                     <input class="form-control" type="number" min="1" max="9"
-                                                        name="bobot{{ $urut }}" value="{{ $nilai }}"
-                                                        required>
+                                                        name="bobot{{ $urut }}"
+                                                        value="{{ number_format($nilai, 2) }}" required>
                                                 </div>
                                             </td>
                                         </tr>

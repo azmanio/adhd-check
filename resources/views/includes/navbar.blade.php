@@ -1,4 +1,23 @@
-<!-- Navigation -->
+@push('script')
+    <script>
+        function logout_confirm(url) {
+            Swal.fire({
+                title: "Apa Kamu Yakin?",
+                text: 'Klik "Yes" untuk mengakhiri session.',
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = url
+                }
+            });
+        }
+    </script>
+@endpush
+
 <nav id="navbar"
     class="navbar @if (Route::currentRouteName() !== 'home') extra-page @endif navbar-expand-lg fixed-top navbar-light"
     aria-label="Main navigation">
@@ -24,16 +43,60 @@
                     <a class="nav-link" href="{{ url('/#contact') }}">Kontak</a>
                 </li>
             </ul>
-            @if (Route::currentRouteName() !== 'auth.login')
-                <span class="nav-item">
-                    <a class="btn-solid-sm" href="{{ route('auth.login') }}">Login</a>
-                </span>
-            @endif
-            @if (Route::currentRouteName() !== 'auth.register')
-                <span class="nav-item">
-                    <a class="btn-outline-sm" href="{{ route('auth.register') }}">Register</a>
-                </span>
-            @endif
+            @auth
+                <div class="d-flex">
+                    <div class="dropdown">
+                        <a href="#" class="dropdown-toggle nav-item text-decoration-none">
+                            <span class="d-none d-lg-inline align-middle">Hi, <strong>{{ auth()->user()->nama }}</strong>!
+                            </span>
+                            @if (auth()->user()->image_path)
+                                <img src="/storage/profile{{ auth()->user()->image_path }}" alt="Foto"
+                                    class="img-profile rounded-circle mx-1"
+                                    style="width: 30px; height: 30px; object-fit: cover">
+                            @else
+                                <img src="{{ asset('assets/admin/img/user.png') }}" alt="Foto"
+                                    class="img-profile rounded-circle mx-1"
+                                    style="width: 30px; height: 30px; object-fit: cover">
+                            @endif
+                        </a>
+                        <ul class="dropdown-menu">
+                            @if (@auth()->user()->role == 'admin')
+                                <li class="dropdown-item">
+                                    <a href="{{ route('dashboard') }}">
+                                        Dashboard Admin
+                                        <i class="fas fa-tachometer-alt"></i>
+                                    </a>
+                                </li>
+                            @elseif (@auth()->user()->role == 'user')
+                                <li>
+                                    <a class="dropdown-item d-flex justify-content-between" href="#">
+                                        Profil
+                                        <i class="fa fa-cog"></i>
+                                    </a>
+                                </li>
+                            @endif
+                            <li>
+                                <button class="dropdown-item d-flex justify-content-between"
+                                    onclick="logout_confirm('{{ route('auth.logout') }}')">
+                                    Keluar
+                                    <i class="fas fa-sign-out-alt"></i>
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            @else
+                @if (Route::currentRouteName() !== 'auth.login')
+                    <span class="nav-item">
+                        <a class="btn-solid-sm" href="{{ route('auth.login') }}">Login</a>
+                    </span>
+                @endif
+                @if (Route::currentRouteName() !== 'auth.register')
+                    <span class="nav-item">
+                        <a class="btn-outline-sm" href="{{ route('auth.register') }}">Register</a>
+                    </span>
+                @endif
+            @endauth
         </div>
     </div>
 </nav>

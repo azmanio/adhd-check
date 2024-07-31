@@ -5,67 +5,67 @@
         <div class="container mt-5">
             <div class="row justify-content-center">
                 <div class="col-lg-12">
-                    <div class="pagetitle text-center mb-4">
-                        <h1><strong>Hasil Diagnosa</strong></h1>
-                    </div><!-- End Page Title -->
-
                     <div class="section">
                         <div class="row justify-content-center">
                             <div class="col-lg-10">
-                                <div class="card mb-4 mt-3 shadow-sm">
-                                    <h3 class="card-header text-center bg-primary text-white">Biodata Pasien</h3>
-                                    <div class="card-body">
-                                        <p><strong>Nama:</strong> {{ $riwayat->nama_anak }}</p>
-                                        <p><strong>Umur:</strong> {{ $riwayat->umur_anak }}</p>
-                                        <p><strong>Instansi:</strong> {{ $riwayat->instansi }}</p>
+                                <div class="card mb-4 mt-3 shadow rounded-3">
+                                    <div class="card-header text-center bg-info">
                                     </div>
-                                </div>
-
-                                <div class="card mb-4 mt-3 shadow-sm">
-                                    <h3 class="card-header text-center bg-primary text-white">Nilai Akhir Kriteria</h3>
                                     <div class="card-body">
-
-                                        {{-- @foreach ($nilai_akhir_kriteria as $kriteria => $nilai_akhir)
-                                            <div class="mb-3">
-                                                <h5 class="text-primary">{{ $kriteria }}</h5>
-                                                <p>Nilai Akhir: <strong>{{ $nilai_akhir }}</strong></p>
-                                            </div>
-
-                                            @if ($nilai_akhir > $max_nilai)
-                                                @php
-                                                    $max_nilai = $nilai_akhir;
-                                                    $max_kriteria = $kriteria;
-                                                @endphp
+                                        <div class="d-flex justify-content-between">
+                                            <h4>Biodata Anak</h4>
+                                            <span>Tanggal Tes: {{ date_format($riwayat->created_at, 'd-m-Y H:i') }}</span>
+                                        </div>
+                                        <p><strong>Nama Anak:</strong> {{ $riwayat->nama_anak }}</p>
+                                        <p><strong>Umur Anak:</strong> {{ $riwayat->umur_anak }}</p>
+                                        <p><strong>Instansi :</strong> {{ $riwayat->instansi }}</p>
+                                        <div class="alert alert-primary text-center pt-3 pb-0 mb-0">
+                                            <h5>Hasil Diagnosis Penyakit ADHD yang Telah
+                                                Dilakukan:</h5>
+                                            <h3>
+                                                {{ number_format($riwayat->persentase_combined, 2) }}% ADHD</h3>
+                                            <p>Kategori: <strong>{{ $riwayat->kategori }}</strong></p>
+                                        </div>
+                                        <div class="alert mb-0 pb-0">
+                                            <p><Strong>Keterangan:</Strong></p>
+                                            <p>{{ $keterangan_kategori }}</p>
+                                        </div>
+                                        <h5 class="text-center mb-3">Nilai Akhir Kriteria</h5>
+                                        <div class="d-flex gap-4 justify-content-center">
+                                            @if ($nilai_akhir_kriteria)
+                                                @foreach ($nilai_akhir_kriteria as $kriteria => $nilai)
+                                                    <div class="card text-center alert-info p-3 pb-0">
+                                                        <h6>{{ $kriteria }}</h6>
+                                                        <p>Nilai Akhir: <strong>{{ number_format($nilai, 3) }}</strong></p>
+                                                    </div>
+                                                @endforeach
+                                            @else
+                                                <p>Tidak ada detail nilai untuk kriteria.</p>
                                             @endif
-                                        @endforeach
-
-                                        <div class="alert alert-info text-center">
-                                            <strong>Kriteria dari Self-determination Terbesarmu adalah:</strong>
-                                            {{ $max_kriteria }} (Nilai: {{ $max_nilai }})
+                                        </div><br>
+                                        <div class="card">
+                                            <div class="card-header text-center alert my-0">
+                                                Kriteria dari Gejala ADHD Terbesarmu adalah :
+                                                <strong>{{ $riwayat->kriteria_dominan }}</strong>
+                                            </div>
+                                            <div class="card-body">
+                                                <p><strong>Deskripsi:</strong></p>
+                                                <p>{{ $riwayat->kriteria->deskripsi }}</p>
+                                                <p><strong>Solusi:</strong></p>
+                                                <p>{{ $riwayat->kriteria->solusi }}</p>
+                                            </div>
                                         </div>
-                                        <div class="alert alert-light">
-                                            <strong>Deskripsi:</strong>
-                                            {{ $deskripsi_kriteria[$max_kriteria] ?? 'Deskripsi tidak tersedia' }}
-                                        </div>
-                                        <div class="alert alert-warning text-center mt-4">
-                                            <strong>Tingkat Self-determination :</strong>
-                                            {{ number_format($presentase, 2) }} %
-                                            ({{ $presentase <= 33 ? 'Rendah' : ($presentase <= 66 ? 'Sedang' : 'Tinggi') }})
-                                        </div>
-                                        <div class="alert alert-success text-center mt-4">
-                                            <strong>Kategori Hasil:</strong> {{ $kategori }}
-                                        </div> --}}
                                     </div>
-                                    <div class="card-footer text-center">
-                                        <a href="{{ route('home') }}" class="btn btn-secondary me-2">Kembali</a>
-                                        <a href="#" class="btn btn-warning me-2">Detail</a>
-                                        {{-- <a href="{{ route('cetak-hasil', $pasien->id) }}" class="btn btn-success">Cetak
-                                            Hasil</a> --}}
+                                    <div class="d-flex gap-2 mx-auto mb-3">
+                                        <a href="{{ route('home') }}"
+                                            class="btn btn-secondary text-decoration-none">Home</a>
+                                        <a href="{{ route('cetak-pdf', $riwayat->id) }}"
+                                            class="btn btn-success text-decoration-none">Cetak</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div><!-- End Section -->
+                    </div>
                 </div>
             </div>
         </div>

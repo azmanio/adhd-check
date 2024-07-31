@@ -16,6 +16,7 @@ return new class extends Migration {
             $table->string('kode_gejala');
             $table->string('gejala');
             $table->double('bobot_prioritas')->nullable();
+            $table->double('nilai_pakar')->nullable();
             $table->foreignIdFor(Kriteria::class);
             $table->timestamps();
         });

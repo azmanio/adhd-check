@@ -15,4 +15,14 @@ class Riwayat extends Model
     {
         return $this->belongsTo(Gejala::class, 'gejala_id');
     }
+
+    public function kriteria()
+    {
+        return $this->belongsTo(Kriteria::class);
+    }
+
+    public function kategori()
+    {
+        return $this->belongsTo(Kategori::class);
+    }
 }

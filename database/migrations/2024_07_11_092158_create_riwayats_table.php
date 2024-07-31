@@ -25,6 +25,7 @@ return new class extends Migration {
             $table->string('kategori')->nullable();
             $table->foreignIdFor(User::class);
             $table->foreignIdFor(Kriteria::class)->nullable();
+            $table->foreignIdFor(Kategori::class)->nullable();
             $table->timestamps();
         });
     }
