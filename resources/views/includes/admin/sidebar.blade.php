@@ -69,9 +69,9 @@
             </ul>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">
-                <i class="cil-chart nav-icon"></i>
-                Arsip Diagnostik
+            <a class="nav-link" href="{{ route('riwayat.index') }}">
+                <i class="cil-history nav-icon"></i>
+                Riwayat Diagnosis
             </a>
         </li>
         <li class="nav-title">Analisis Data</li>
@@ -86,13 +86,6 @@
             <a class="nav-link @if (str_contains(Route::currentRouteName(), 'analisis-gejala')) active @endif" href="{{ route('rel-gejala.index') }}">
                 <i class="fas fa-balance-scale-right nav-icon"></i>
                 Perbandingan Gejala
-            </a>
-        </li>
-        <li class="nav-title">Layanan</li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">
-                <i class="fas fa-stethoscope nav-icon"></i>
-                Tes Diagnostik
             </a>
         </li>
     </ul>

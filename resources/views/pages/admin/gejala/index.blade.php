@@ -49,7 +49,7 @@
         <div class="card">
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table align-middle" id="dataTable">
+                    <table class="table align-middle w-100" id="dataTable">
                         <thead>
                             <tr>
                                 <th class="text-center" scope="col">No</th>
@@ -67,12 +67,12 @@
                                     <td>{{ $item->gejala }}</td>
                                     <td class="text-center">{{ number_format($item->bobot_prioritas, 3) }}</td>
                                     <td class="text-center d-flex flex-column d-md-block py-3">
-                                        <a class="btn btn-primary mb-2 mb-md-2" href="{{ route('gejala.edit', $item) }}">
+                                        <a class="btn btn-primary mb-2" href="{{ route('gejala.edit', $item) }}">
                                             <i class="cil-pen"></i>
                                         </a>
-                                        <button class="btn btn-danger"
+                                        <button class="btn btn-danger mb-2"
                                             onclick="delete_confirm('{{ route('gejala.delete', $item) }}')">
-                                            <i class="cil-trash"></i>
+                                            <i class="fas fa-trash-alt text-white"></i>
                                         </button>
                                     </td>
                                 </tr>

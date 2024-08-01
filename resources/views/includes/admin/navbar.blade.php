@@ -6,34 +6,7 @@
             <use xlink:href="{{ asset('assets/admin/node_modules/@coreui/icons/sprites/free.svg#cil-menu') }}"></use>
         </svg>
     </button>
-    <ul class="header-nav d-none d-lg-flex">
-        <li class="nav-item"><a class="nav-link" href="#">Dashboard</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Users</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Settings</a></li>
-    </ul>
-    <ul class="header-nav ms-auto">
-        <li class="nav-item"><a class="nav-link" href="#">
-                <svg class="icon icon-lg">
-                    <use xlink:href="{{ asset('assets/admin/node_modules/@coreui/icons/sprites/free.svg#cil-bell') }}">
-                    </use>
-                </svg></a></li>
-        <li class="nav-item"><a class="nav-link" href="#">
-                <svg class="icon icon-lg">
-                    <use
-                        xlink:href="{{ asset('assets/admin/node_modules/@coreui/icons/sprites/free.svg#cil-list-rich') }}">
-                    </use>
-                </svg></a></li>
-        <li class="nav-item"><a class="nav-link" href="#">
-                <svg class="icon icon-lg">
-                    <use
-                        xlink:href="{{ asset('assets/admin/node_modules/@coreui/icons/sprites/free.svg#cil-envelope-open') }}">
-                    </use>
-                </svg></a></li>
-    </ul>
     <ul class="header-nav">
-        <li class="nav-item py-1">
-            <div class="vr h-100 mx-2 text-body text-opacity-75 text-heo"></div>
-        </li>
         <li class="nav-item dropdown">
             <button class="btn btn-link nav-link py-2 px-2 d-flex align-items-center" type="button"
                 aria-expanded="false" data-coreui-toggle="dropdown">
@@ -86,66 +59,27 @@
             </a>
             <div class="dropdown-menu dropdown-menu-end pt-0">
                 <div class="dropdown-header bg-body-tertiary text-body-secondary fw-semibold rounded-top mb-2">
-                    Account</div><a class="dropdown-item" href="#">
-                    <svg class="icon me-2">
-                        <use
-                            xlink:href="{{ asset('assets/admin/node_modules/@coreui/icons/sprites/free.svg#cil-bell') }}">
-                        </use>
-                    </svg> Updates<span class="badge badge-sm bg-info ms-2">42</span></a><a class="dropdown-item"
-                    href="#">
-                    <svg class="icon me-2">
-                        <use
-                            xlink:href="{{ asset('assets/admin/node_modules/@coreui/icons/sprites/free.svg#cil-envelope-open') }}">
-                        </use>
-                    </svg> Messages<span class="badge badge-sm bg-success ms-2">42</span></a><a class="dropdown-item"
-                    href="#">
-                    <svg class="icon me-2">
-                        <use
-                            xlink:href="{{ asset('assets/admin/node_modules/@coreui/icons/sprites/free.svg#cil-task') }}">
-                        </use>
-                    </svg> Tasks<span class="badge badge-sm bg-danger ms-2">42</span></a><a class="dropdown-item"
-                    href="#">
-                    <svg class="icon me-2">
-                        <use
-                            xlink:href="{{ asset('assets/admin/node_modules/@coreui/icons/sprites/free.svg#cil-comment-square') }}">
-                        </use>
-                    </svg> Comments<span class="badge badge-sm bg-warning ms-2">42</span></a>
-                <div class="dropdown-header bg-body-tertiary text-body-secondary fw-semibold my-2">
-                    <div class="fw-semibold">Settings</div>
-                </div><a class="dropdown-item" href="#">
-                    <svg class="icon me-2">
-                        <use
-                            xlink:href="{{ asset('assets/admin/node_modules/@coreui/icons/sprites/free.svg#cil-user') }}">
-                        </use>
-                    </svg> Profile</a><a class="dropdown-item" href="#">
-                    <svg class="icon me-2">
-                        <use
-                            xlink:href="{{ asset('assets/admin/node_modules/@coreui/icons/sprites/free.svg#cil-settings') }}">
-                        </use>
-                    </svg> Settings</a><a class="dropdown-item" href="#">
-                    <svg class="icon me-2">
-                        <use
-                            xlink:href="{{ asset('assets/admin/node_modules/@coreui/icons/sprites/free.svg#cil-credit-card') }}">
-                        </use>
-                    </svg> Payments<span class="badge badge-sm bg-secondary ms-2">42</span></a><a
-                    class="dropdown-item" href="#">
-                    <svg class="icon me-2">
-                        <use
-                            xlink:href="{{ asset('assets/admin/node_modules/@coreui/icons/sprites/free.svg#cil-file') }}">
-                        </use>
-                    </svg> Projects<span class="badge badge-sm bg-primary ms-2">42</span></a>
-                <div class="dropdown-divider"></div><a class="dropdown-item" href="#">
-                    <svg class="icon me-2">
-                        <use
-                            xlink:href="{{ asset('assets/admin/node_modules/@coreui/icons/sprites/free.svg#cil-lock-locked') }}">
-                        </use>
-                    </svg> Lock Account</a>
-                <a class="dropdown-item" href="{{ route('auth.logout') }}">
+                    Account</div>
+                <a class="dropdown-item" href="{{ route('home') }}">
                     <div class="me-2">
-                        <i class="cil-account-logout icon"></i>
-                        <span class="mx-2">Logout</span>
+                        <i class="cil-home icon"></i>
+                        <span class="mx-2">Home</span>
                     </div>
                 </a>
+                <a class="dropdown-item" href="#">
+                    <div class="me-2">
+                        <i class="cil-user icon"></i>
+                        <span class="mx-2">Profile</span>
+                    </div>
+                </a>
+                <a class="dropdown-item" href="#">
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{{ route('auth.logout') }}">
+                        <div class="me-2">
+                            <i class="cil-account-logout icon"></i>
+                            <span class="mx-2">Logout</span>
+                        </div>
+                    </a>
             </div>
         </li>
     </ul>

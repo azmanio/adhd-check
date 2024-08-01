@@ -20,13 +20,10 @@
                     @endif
                     <input type="hidden" name="riwayat_id" value="{{ $riwayat->id }}">
                     <div class="row row-cols-1 row-cols-md-2 g-4">
-                        {{-- @php
-                            $nomor_pertanyaan = ($gejalas->currentPage() - 1) * $gejalas->perPage();
-                        @endphp --}}
                         @foreach ($gejalas as $index => $gejala)
                             <div class="col">
                                 <div class="card h-100">
-                                    <div class="card-header">
+                                    <div class="alert alert-info mb-0">
                                         <strong>{{ $index + 1 }}. {{ $gejala->gejala }}</strong>
                                     </div>
                                     <div class="card-body">
@@ -74,16 +71,6 @@
                     <div class="text-center mt-4 mb-3">
                         <button type="submit" id="submit-button" class="btn btn-primary">Diagnosa</button>
                     </div>
-
-                    {{-- @if ($gejalas->currentPage() === $gejalas->lastPage())
-                        <div class="text-center mt-4 mb-3">
-                            <button type="submit" id="submit-button" class="btn btn-primary">Diagnosa</button>
-                        </div>
-                    @endif
-
-                    <div class="mt-3 d-flex justify-content-center">
-                        {{ $gejalas->links() }}
-                    </div> --}}
                 </form>
 
             </div>

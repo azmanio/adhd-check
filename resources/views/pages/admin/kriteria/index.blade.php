@@ -49,7 +49,7 @@
         <div class="card">
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table align-middle" id="dataTable">
+                    <table class="table align-middle w-100" id="dataTable">
                         <thead>
                             <tr class="align-middle">
                                 <th class="text-center" scope="col">No</th>
@@ -77,7 +77,7 @@
                                             </a>
                                             <button class="btn btn-danger"
                                                 onclick="delete_confirm('{{ route('kriteria.delete', $item) }}')">
-                                                <i class="cil-trash"></i>
+                                                <i class="fas fa-trash-alt text-white"></i>
                                             </button>
                                         </div>
                                     </td>

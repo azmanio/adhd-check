@@ -50,7 +50,7 @@
         <div class="card">
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table align-middle" id="dataTable">
+                    <table class="table align-middle w-100" id="dataTable">
                         <thead>
                             <tr>
                                 <th class="text-center" scope="col">No</th>
@@ -75,17 +75,17 @@
                                                 style="height: 50px" class="rounded-circle">
                                         @endif
                                     </td>
-                                    <td class="text-center">{{ $item->nama }}</td>
+                                    <td class="text-center">{{ ucwords($item->nama) }}</td>
                                     <td class="text-center">{{ $item->email }}</td>
                                     <td class="text-center">{{ $item->no_hp }}</td>
-                                    <td class="text-center">{{ $item->role }}</td>
+                                    <td class="text-center">{{ ucwords($item->role) }}</td>
                                     <td class="text-center d-flex flex-column d-md-block py-3">
                                         <a class="btn btn-primary mb-1 mb-md-0" href="{{ route('user.edit', $item) }}">
                                             <i class="cil-pen"></i>
                                         </a>
                                         <button class="btn btn-danger"
                                             onclick="delete_confirm('{{ route('user.delete', $item) }}')">
-                                            <i class="cil-trash"></i>
+                                            <i class="fas fa-trash-alt text-white"></i>
                                         </button>
                                     </td>
                                 </tr>

@@ -61,20 +61,19 @@
                         </a>
                         <ul class="dropdown-menu">
                             @if (@auth()->user()->role == 'admin')
-                                <li class="dropdown-item">
-                                    <a href="{{ route('dashboard') }}">
-                                        Dashboard Admin
+                                <li>
+                                    <a class="dropdown-item d-flex justify-content-between" href="{{ route('dashboard') }}">
+                                        Dashboard
                                         <i class="fas fa-tachometer-alt"></i>
                                     </a>
                                 </li>
-                            @elseif (@auth()->user()->role == 'user')
-                                <li>
-                                    <a class="dropdown-item d-flex justify-content-between" href="#">
-                                        Profil
-                                        <i class="fa fa-cog"></i>
-                                    </a>
-                                </li>
                             @endif
+                            <li>
+                                <a class="dropdown-item d-flex justify-content-between" href="{{ route('profile.index') }}">
+                                    Profile
+                                    <i class="fa fa-cog"></i>
+                                </a>
+                            </li>
                             <li>
                                 <button class="dropdown-item d-flex justify-content-between"
                                     onclick="logout_confirm('{{ route('auth.logout') }}')">

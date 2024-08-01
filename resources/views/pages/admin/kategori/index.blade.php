@@ -49,7 +49,7 @@
         <div class="card">
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table align-middle" id="dataTable">
+                    <table class="table align-middle w-100" id="dataTable">
                         <thead>
                             <tr class="align-middle">
                                 <th class="text-center" scope="col">No</th>
@@ -68,14 +68,17 @@
                                     <td class="text-center">{{ $item->keterangan }}</td>
                                     <td class="text-center">{{ $item->range_min }}</td>
                                     <td class="text-center">{{ $item->range_max }}</td>
-                                    <td class="text-center d-flex flex-column d-md-block py-3">
-                                        <a class="btn btn-primary mb-1 mb-md-2" href="{{ route('kategori.edit', $item) }}">
-                                            <i class="cil-pen"></i>
-                                        </a>
-                                        <button class="btn btn-danger"
-                                            onclick="delete_confirm('{{ route('kategori.delete', $item) }}')">
-                                            <i class="cil-trash"></i>
-                                        </button>
+                                    <td class="text-center">
+                                        <div class="d-flex flex-column d-md-block">
+                                            <a class="btn btn-primary mb-0 mb-md-2"
+                                                href="{{ route('kategori.edit', $item) }}">
+                                                <i class="cil-pen"></i>
+                                            </a>
+                                            <button class="btn btn-danger"
+                                                onclick="delete_confirm('{{ route('kategori.delete', $item) }}')">
+                                                <i class="fas fa-trash-alt text-white"></i>
+                                            </button>
+                                        </div>
                                     </td>
                                 </tr>
                             @endforeach

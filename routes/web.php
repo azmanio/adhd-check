@@ -4,16 +4,22 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DiagnosisController;
 use App\Http\Controllers\GejalaController;
 use App\Http\Controllers\KriteriaController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RandomIndexController;
 use App\Http\Controllers\RelGejalaController;
 use App\Http\Controllers\RelKriteriaController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\RiwayatController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('pages.home.app');
 })->name('home');
+
+Route::resource('/profile', ProfileController::class);
+
+Route::get('/diagnosis/hasil/{riwayat_id}/pdf', [DiagnosisController::class, 'cetakPdf'])->name('cetak-pdf');
 
 Route::prefix('diagnosis')->middleware('auth')->group(function () {
     Route::get('/form-identitas', [DiagnosisController::class, 'index'])->name('form-identitas');
@@ -24,7 +30,7 @@ Route::prefix('diagnosis')->middleware('auth')->group(function () {
 
     Route::post('/proses-diagnosis', [DiagnosisController::class, 'prosesDiagnosis'])->name('proses-diagnosis');
 
-    Route::get('/hasil-diagnosis/{hasil_diagnosis}', [DiagnosisController::class, 'hasilDiagnosis'])->name('hasil-diagnosis');
+    Route::get('/hasil-diagnosis/{riwayat_id}', [DiagnosisController::class, 'hasilDiagnosis'])->name('hasil-diagnosis');
 });
 
 Route::prefix('admin')->group(function () {
@@ -51,6 +57,9 @@ Route::prefix('admin')->group(function () {
     Route::post('/analisis-gejala/store', [RelGejalaController::class, 'store'])->name('rel-gejala.store');
 
     Route::resource('analisis-kriteria', RelKriteriaController::class);
+
+    Route::resource('/riwayat', RiwayatController::class);
+    Route::get('/riwayat/{riwayat}/delete', [RiwayatController::class, 'destroy'])->name('riwayat.delete');
 });
 
 

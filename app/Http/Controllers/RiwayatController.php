@@ -12,47 +12,9 @@ class RiwayatController extends Controller
      */
     public function index()
     {
-        //
-    }
+        $riwayats = Riwayat::with(['kriteria', 'user'])->whereNotNull('kriteria_id')->get();
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Riwayat $riwayat)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Riwayat $riwayat)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Riwayat $riwayat)
-    {
-        //
+        return view('pages.admin.riwayat.index', compact('riwayats'));
     }
 
     /**
@@ -60,6 +22,7 @@ class RiwayatController extends Controller
      */
     public function destroy(Riwayat $riwayat)
     {
-        //
+        $riwayat->delete();
+        return redirect()->route('riwayat.index');
     }
 }

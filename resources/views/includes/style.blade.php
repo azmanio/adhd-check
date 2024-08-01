@@ -7,6 +7,9 @@
 <link href="{{ asset('assets/css/swiper.css') }}" rel="stylesheet">
 <link href="{{ asset('assets/css/styles.css') }}" rel="stylesheet">
 
+{{-- <link rel="stylesheet" href="https://cdn.datatables.net/2.0.8/css/dataTables.dataTables.css"> --}}
+<link rel="stylesheet" href="https://cdn.datatables.net/2.0.8/css/dataTables.bootstrap5.css">
+
 <!-- Favicon  -->
 <link href="{{ asset('assets/admin/img/logo-adhd-icon.png') }}" rel="icon">
 

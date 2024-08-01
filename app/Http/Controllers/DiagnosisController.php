@@ -188,32 +188,108 @@ class DiagnosisController extends Controller
 
     public function hasilDiagnosis($riwayat_id)
     {
-        $user_id = Auth::id();
-
-        $riwayat = Riwayat::where('id', $riwayat_id)
-            ->where('user_id', $user_id)
-            ->firstOrFail();
+        $riwayat = Riwayat::where('id', $riwayat_id)->firstOrFail();
 
         // Ambil nilai kriteria dan deskripsi dari session
         $nilai_akhir_kriteria = session()->get('nilai_akhir_kriteria');
         $deskripsi_kriteria = session()->get('deskripsi_kriteria');
         $keterangan_kategori = session()->get('keterangan_kategori');
 
+        // Periksa apakah data diperlukan ada di session, jika tidak hitung ulang
+        if (!$nilai_akhir_kriteria || !$deskripsi_kriteria || !$keterangan_kategori) {
+            $diagnosis = Diagnosis::where('riwayat_id', $riwayat_id)->get();
+
+            $total_nilai_user = 0;
+            $nilai_kriteria = [];
+
+            // Hitung total nilai user dan nilai per kriteria
+            foreach ($diagnosis as $item) {
+                $total_nilai_user += $item->nilai_user;
+
+                if (!isset($nilai_kriteria[$item->kriteria_id])) {
+                    $nilai_kriteria[$item->kriteria_id] = 0;
+                }
+                $nilai_kriteria[$item->kriteria_id] += $item->nilai_hasil;
+            }
+
+            arsort($nilai_kriteria);
+            $kriteria_dominan_id = key($nilai_kriteria);
+            $kriteria_dominan = Kriteria::find($kriteria_dominan_id);
+            $kriteria_dominan_nama = $kriteria_dominan->nama;
+
+            $kategoris = Kategori::where('range_min', '<=', $total_nilai_user)
+                ->where('range_max', '>=', $total_nilai_user)
+                ->first();
+            $kategori = $kategoris->kategori;
+            $keterangan_kategori = $kategoris->keterangan;
+
+            $nilai_akhir_kriteria = [];
+            $deskripsi_kriteria = [];
+
+            foreach ($nilai_kriteria as $kriteria_id => $nilai) {
+                $kriteria = Kriteria::find($kriteria_id);
+                $nilai_akhir_kriteria[$kriteria->nama] = $nilai;
+                $deskripsi_kriteria[$kriteria->nama] = $kriteria->deskripsi;
+            }
+
+            session()->put('nilai_akhir_kriteria', $nilai_akhir_kriteria);
+            session()->put('deskripsi_kriteria', $deskripsi_kriteria);
+            session()->put('keterangan_kategori', $keterangan_kategori);
+        }
+
         return view('pages.home.diagnosis.hasil', compact('riwayat', 'nilai_akhir_kriteria', 'deskripsi_kriteria', 'keterangan_kategori'));
     }
 
     public function cetakPdf($riwayat_id)
     {
-        $user_id = Auth::id();
-
-        $riwayat = Riwayat::where('id', $riwayat_id)
-            ->where('user_id', $user_id)
-            ->firstOrFail();
+        $riwayat = Riwayat::with('kriteria')->where('id', $riwayat_id)->firstOrFail();
 
         $nilai_akhir_kriteria = session()->get('nilai_akhir_kriteria');
         $deskripsi_kriteria = session()->get('deskripsi_kriteria');
+        $keterangan_kategori = session()->get('keterangan_kategori');
 
-        $pdf = PDF::loadView('pages.home.diagnosis.cetak', compact('riwayat', 'nilai_akhir_kriteria', 'deskripsi_kriteria'));
+        if (!$nilai_akhir_kriteria || !$deskripsi_kriteria || !$keterangan_kategori) {
+            $diagnosis = Diagnosis::where('riwayat_id', $riwayat_id)->get();
+
+            $total_nilai_user = 0;
+            $nilai_kriteria = [];
+
+            // Hitung total nilai user dan nilai per kriteria
+            foreach ($diagnosis as $item) {
+                $total_nilai_user += $item->nilai_user;
+
+                if (!isset($nilai_kriteria[$item->kriteria_id])) {
+                    $nilai_kriteria[$item->kriteria_id] = 0;
+                }
+                $nilai_kriteria[$item->kriteria_id] += $item->nilai_hasil;
+            }
+
+            arsort($nilai_kriteria);
+            $kriteria_dominan_id = key($nilai_kriteria);
+            $kriteria_dominan = Kriteria::find($kriteria_dominan_id);
+            $kriteria_dominan_nama = $kriteria_dominan->nama;
+
+            $kategoris = Kategori::where('range_min', '<=', $total_nilai_user)
+                ->where('range_max', '>=', $total_nilai_user)
+                ->first();
+            $kategori = $kategoris->kategori;
+            $keterangan_kategori = $kategoris->keterangan;
+
+            $nilai_akhir_kriteria = [];
+            $deskripsi_kriteria = [];
+
+            foreach ($nilai_kriteria as $kriteria_id => $nilai) {
+                $kriteria = Kriteria::find($kriteria_id);
+                $nilai_akhir_kriteria[$kriteria->nama] = $nilai;
+                $deskripsi_kriteria[$kriteria->nama] = $kriteria->deskripsi;
+            }
+
+            session()->put('nilai_akhir_kriteria', $nilai_akhir_kriteria);
+            session()->put('deskripsi_kriteria', $deskripsi_kriteria);
+            session()->put('keterangan_kategori', $keterangan_kategori);
+        }
+
+        $pdf = PDF::loadView('pages.home.diagnosis.cetak', compact('riwayat', 'nilai_akhir_kriteria', 'deskripsi_kriteria', 'keterangan_kategori'));
 
         // Format nama file PDF
         $fileName = 'Hasil_Diagnosis_' . str_replace(' ', '_', $riwayat->nama_anak) . '.pdf';

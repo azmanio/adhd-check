@@ -49,7 +49,7 @@
         <div class="card">
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table align-middle" id="dataTable">
+                    <table class="table align-middle w-100" id="dataTable">
                         <thead>
                             <tr>
                                 <th class="text-center" scope="col">Jumlah Matriks</th>
@@ -69,7 +69,7 @@
                                         </a>
                                         <button class="btn btn-danger"
                                             onclick="delete_confirm('{{ route('random-index.delete', $item) }}')">
-                                            <i class="cil-trash"></i>
+                                            <i class="fas fa-trash-alt text-white"></i>
                                         </button>
                                     </td>
                                 </tr>
