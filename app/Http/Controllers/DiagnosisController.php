@@ -170,6 +170,7 @@ class DiagnosisController extends Controller
         session()->put('nilai_akhir_kriteria', $nilai_akhir_kriteria);
         session()->put('deskripsi_kriteria', $deskripsi_kriteria);
         session()->put('keterangan_kategori', $keterangan_kategori);
+        session()->put('total_nilai_user', $total_nilai_user);
 
         // Simpan hasil diagnosis ke database
         Riwayat::where('id', $riwayat_id)->update([
@@ -194,6 +195,7 @@ class DiagnosisController extends Controller
         $nilai_akhir_kriteria = session()->get('nilai_akhir_kriteria');
         $deskripsi_kriteria = session()->get('deskripsi_kriteria');
         $keterangan_kategori = session()->get('keterangan_kategori');
+        $total_nilai_user = session()->get('total_nilai_user');
 
         // Periksa apakah data diperlukan ada di session, jika tidak hitung ulang
         if (!$nilai_akhir_kriteria || !$deskripsi_kriteria || !$keterangan_kategori) {
@@ -235,9 +237,10 @@ class DiagnosisController extends Controller
             session()->put('nilai_akhir_kriteria', $nilai_akhir_kriteria);
             session()->put('deskripsi_kriteria', $deskripsi_kriteria);
             session()->put('keterangan_kategori', $keterangan_kategori);
+            session()->put('total_nilai_user', $total_nilai_user);
         }
 
-        return view('pages.home.diagnosis.hasil', compact('riwayat', 'nilai_akhir_kriteria', 'deskripsi_kriteria', 'keterangan_kategori'));
+        return view('pages.home.diagnosis.hasil', compact('riwayat', 'nilai_akhir_kriteria', 'deskripsi_kriteria', 'keterangan_kategori', 'total_nilai_user'));
     }
 
     public function cetakPdf($riwayat_id)
@@ -247,6 +250,7 @@ class DiagnosisController extends Controller
         $nilai_akhir_kriteria = session()->get('nilai_akhir_kriteria');
         $deskripsi_kriteria = session()->get('deskripsi_kriteria');
         $keterangan_kategori = session()->get('keterangan_kategori');
+        $total_nilai_user = session()->get('total_nilai_user');
 
         if (!$nilai_akhir_kriteria || !$deskripsi_kriteria || !$keterangan_kategori) {
             $diagnosis = Diagnosis::where('riwayat_id', $riwayat_id)->get();
@@ -287,9 +291,10 @@ class DiagnosisController extends Controller
             session()->put('nilai_akhir_kriteria', $nilai_akhir_kriteria);
             session()->put('deskripsi_kriteria', $deskripsi_kriteria);
             session()->put('keterangan_kategori', $keterangan_kategori);
+            session()->put('total_nilai_user', $total_nilai_user);
         }
 
-        $pdf = PDF::loadView('pages.home.diagnosis.cetak', compact('riwayat', 'nilai_akhir_kriteria', 'deskripsi_kriteria', 'keterangan_kategori'));
+        $pdf = PDF::loadView('pages.home.diagnosis.cetak', compact('riwayat', 'nilai_akhir_kriteria', 'deskripsi_kriteria', 'keterangan_kategori', 'total_nilai_user'));
 
         // Format nama file PDF
         $fileName = 'Hasil_Diagnosis_' . str_replace(' ', '_', $riwayat->nama_anak) . '.pdf';

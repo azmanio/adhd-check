@@ -30,31 +30,34 @@
                                             <p><Strong>Keterangan:</Strong></p>
                                             <p>{{ $keterangan_kategori }}</p>
                                         </div>
-                                        <h5 class="text-center mb-3">Nilai Akhir Kriteria</h5>
-                                        <div class="d-flex gap-4 justify-content-center">
-                                            @if ($nilai_akhir_kriteria)
-                                                @foreach ($nilai_akhir_kriteria as $kriteria => $nilai)
-                                                    <div class="card text-center alert-info p-3 pb-0">
-                                                        <h6>{{ $kriteria }}</h6>
-                                                        <p>Nilai Akhir: <strong>{{ number_format($nilai, 3) }}</strong></p>
-                                                    </div>
-                                                @endforeach
-                                            @else
-                                                <p>Tidak ada detail nilai untuk kriteria.</p>
-                                            @endif
-                                        </div><br>
-                                        <div class="card">
-                                            <div class="card-header text-center alert my-0">
-                                                Kriteria dari Gejala ADHD Terbesarmu adalah :
-                                                <strong>{{ $riwayat->kriteria_dominan }}</strong>
+                                        @if ($total_nilai_user > 2)
+                                            <h5 class="text-center mb-3">Nilai Akhir Kriteria</h5>
+                                            <div class="d-flex gap-4 justify-content-center">
+                                                @if ($nilai_akhir_kriteria)
+                                                    @foreach ($nilai_akhir_kriteria as $kriteria => $nilai)
+                                                        <div class="card text-center alert-info p-3 pb-0">
+                                                            <h6>{{ $kriteria }}</h6>
+                                                            <p>Nilai Akhir: <strong>{{ number_format($nilai, 3) }}</strong>
+                                                            </p>
+                                                        </div>
+                                                    @endforeach
+                                                @else
+                                                    <p>Tidak ada detail nilai untuk kriteria.</p>
+                                                @endif
+                                            </div><br>
+                                            <div class="card">
+                                                <div class="card-header text-center alert my-0">
+                                                    Kriteria dari Gejala ADHD Terbesarmu adalah :
+                                                    <strong>{{ $riwayat->kriteria_dominan }}</strong>
+                                                </div>
+                                                <div class="card-body">
+                                                    <p><strong>Deskripsi:</strong></p>
+                                                    <p>{{ $riwayat->kriteria->deskripsi }}</p>
+                                                    <p><strong>Solusi:</strong></p>
+                                                    <p>{{ $riwayat->kriteria->solusi }}</p>
+                                                </div>
                                             </div>
-                                            <div class="card-body">
-                                                <p><strong>Deskripsi:</strong></p>
-                                                <p>{{ $riwayat->kriteria->deskripsi }}</p>
-                                                <p><strong>Solusi:</strong></p>
-                                                <p>{{ $riwayat->kriteria->solusi }}</p>
-                                            </div>
-                                        </div>
+                                        @endif
                                     </div>
                                     <div class="d-flex gap-2 mx-auto mb-3">
                                         <a href="{{ route('home') }}"

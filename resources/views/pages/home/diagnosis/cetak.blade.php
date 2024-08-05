@@ -105,32 +105,35 @@
             <p><Strong>Keterangan:</Strong></p>
             {{ $keterangan_kategori }}
         </div>
-        <h6 class="section-header mb-2">Nilai Akhir Kriteria</h6>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    @foreach ($nilai_akhir_kriteria as $kriteria => $nilai)
-                        <th class="text-center">{{ $kriteria }}</th>
-                    @endforeach
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    @foreach ($nilai_akhir_kriteria as $kriteria => $nilai)
-                        <td class="text-center">{{ number_format($nilai, 3) }}</td>
-                    @endforeach
-                </tr>
-            </tbody>
-        </table>
+        @if ($total_nilai_user > 2)
+            <h6 class="section-header mb-2">Nilai Akhir Kriteria</h6>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        @foreach ($nilai_akhir_kriteria as $kriteria => $nilai)
+                            <th class="text-center">{{ $kriteria }}</th>
+                        @endforeach
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        @foreach ($nilai_akhir_kriteria as $kriteria => $nilai)
+                            <td class="text-center">{{ number_format($nilai, 3) }}</td>
+                        @endforeach
+                    </tr>
+                </tbody>
+            </table>
 
-        <div class="alert alert-info text-center mt-3">
-            Kriteria dari Gejala ADHD Terbesarmu adalah :
-            <strong>{{ $riwayat->kriteria_dominan }} (Nilai: {{ number_format($riwayat->nilai_hasil, 3) }})</strong>
-        </div>
-        <div class="mt-0">
-            <strong>Deskripsi:</strong> {{ $riwayat->kriteria->deskripsi }}<br><br>
-            <strong>Solusi:</strong> {{ $riwayat->kriteria->solusi }}
-        </div>
+            <div class="alert alert-info text-center mt-3">
+                Kriteria dari Gejala ADHD Terbesarmu adalah :
+                <strong>{{ $riwayat->kriteria_dominan }} (Nilai:
+                    {{ number_format($riwayat->nilai_hasil, 3) }})</strong>
+            </div>
+            <div class="mt-0">
+                <strong>Deskripsi:</strong> {{ $riwayat->kriteria->deskripsi }}<br><br>
+                <strong>Solusi:</strong> {{ $riwayat->kriteria->solusi }}
+            </div>
+        @endif
     </div>
 
     <div class="section text-end-center mt-3">

@@ -69,7 +69,7 @@
                     </div>
 
                     <div class="text-center mt-4 mb-3">
-                        <button type="submit" id="submit-button" class="btn btn-primary">Diagnosa</button>
+                        <button type="submit" id="submit-button" class="btn btn-primary">Diagnosis</button>
                     </div>
                 </form>
 
