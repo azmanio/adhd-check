@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Kategori;
 use App\Models\Kriteria;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class KategoriController extends Controller
 {
@@ -13,7 +14,10 @@ class KategoriController extends Controller
      */
     public function index()
     {
-        $data = Kategori::with('kriteria')->get();
+        $data = Kategori::all();
+        $title = 'Apa kamu yakin?';
+        $text = "Data yang dihapus tidak dapat dikembalikan lagi";
+        confirmDelete($title, $text);
         return view('pages.admin.kategori.index', compact('data'));
     }
 
@@ -22,8 +26,7 @@ class KategoriController extends Controller
      */
     public function create()
     {
-        $kriterias = Kriteria::all();
-        return view('pages.admin.kategori.create', compact('kriterias'));
+        return view('pages.admin.kategori.create');
     }
 
     /**
@@ -36,10 +39,10 @@ class KategoriController extends Controller
             'keterangan' => ['required', 'string'],
             'range_min' => ['required', 'numeric'],
             'range_max' => ['required', 'numeric'],
-            'kriteria_id' => ['required', 'exists:kriterias,id'],
         ]);
 
         Kategori::create($data);
+        Alert::success('Sukses!', 'Data Berhasil Disimpan');
         return redirect()->route('kategori.index');
     }
 
@@ -56,8 +59,7 @@ class KategoriController extends Controller
      */
     public function edit(Kategori $kategori)
     {
-        $kriterias = Kriteria::all();
-        return view('pages.admin.kategori.update', compact('kategori', 'kriterias'));
+        return view('pages.admin.kategori.update', compact('kategori'));
     }
 
     /**
@@ -70,10 +72,10 @@ class KategoriController extends Controller
             'keterangan' => ['required', 'string'],
             'range_min' => ['required', 'numeric'],
             'range_max' => ['required', 'numeric'],
-            'kriteria_id' => ['required', 'exists:kriterias,id'],
         ]);
 
         $kategori->update($data);
+        Alert::success('Sukses!', 'Data Berhasil Diubah');
         return redirect()->route('kategori.index');
     }
 
@@ -83,6 +85,7 @@ class KategoriController extends Controller
     public function destroy(Kategori $kategori)
     {
         $kategori->delete();
+        Alert::success('Sukses!', 'Data Berhasil Dihapus');
         return redirect()->route('kategori.index');
     }
 }

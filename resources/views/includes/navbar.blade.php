@@ -1,6 +1,6 @@
 @push('script')
     <script>
-        function logout_confirm(url) {
+        function logout_confirm(formId) {
             Swal.fire({
                 title: "Apa Kamu Yakin?",
                 text: 'Klik "Yes" untuk mengakhiri session.',
@@ -11,7 +11,7 @@
                 confirmButtonText: "Yes!"
             }).then((result) => {
                 if (result.isConfirmed) {
-                    window.location.href = url
+                    document.getElementById(formId).submit();
                 }
             });
         }
@@ -33,7 +33,7 @@
 
         <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
             <ul class="navbar-nav ms-auto navbar-nav-scroll mx-2">
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link" href="{{ url('/#header') }}">Home</a>
                 </li>
                 <li class="nav-item">
@@ -41,7 +41,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('/#contact') }}">Kontak</a>
-                </li>
+                </li> --}}
             </ul>
             @auth
                 <div class="d-flex">
@@ -50,7 +50,7 @@
                             <span class="d-none d-lg-inline align-middle">Hi, <strong>{{ auth()->user()->nama }}</strong>!
                             </span>
                             @if (auth()->user()->image_path)
-                                <img src="/storage/profile{{ auth()->user()->image_path }}" alt="Foto"
+                                <img src="{{ asset('/storage/' . auth()->user()->image_path) }}" alt="Foto"
                                     class="img-profile rounded-circle mx-1"
                                     style="width: 30px; height: 30px; object-fit: cover">
                             @else
@@ -75,25 +75,28 @@
                                 </a>
                             </li>
                             <li>
-                                <button class="dropdown-item d-flex justify-content-between"
-                                    onclick="logout_confirm('{{ route('auth.logout') }}')">
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                                <a class="dropdown-item d-flex justify-content-between"
+                                    onclick="logout_confirm('logout-form')">
                                     Keluar
                                     <i class="fas fa-sign-out-alt"></i>
-                                </button>
+                                </a>
                             </li>
                         </ul>
                     </div>
                 </div>
             @else
-                @if (Route::currentRouteName() !== 'auth.login')
-                    <span class="nav-item">
-                        <a class="btn-solid-sm" href="{{ route('auth.login') }}">Login</a>
-                    </span>
+                @if (Route::currentRouteName() !== 'login')
+                    <div class="nav-item">
+                        <a class="btn-solid-sm" href="{{ route('login') }}">Login</a>
+                    </div>
                 @endif
-                @if (Route::currentRouteName() !== 'auth.register')
-                    <span class="nav-item">
-                        <a class="btn-outline-sm" href="{{ route('auth.register') }}">Register</a>
-                    </span>
+                @if (Route::currentRouteName() !== 'register')
+                    <div class="nav-item">
+                        <a class="btn-outline-sm" href="{{ route('register') }}">Register</a>
+                    </div>
                 @endif
             @endauth
         </div>

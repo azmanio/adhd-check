@@ -20,6 +20,8 @@
 </head>
 
 <body>
+    @include('sweetalert::alert')
+
     @include('includes.admin.sidebar')
 
     <div class="wrapper d-flex flex-column min-vh-100">

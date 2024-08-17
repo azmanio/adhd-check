@@ -17,7 +17,6 @@ return new class extends Migration {
             $table->text('keterangan');
             $table->double('range_min');
             $table->double('range_max');
-            $table->foreignIdFor(Kriteria::class)->nullable();
             $table->timestamps();
         });
     }

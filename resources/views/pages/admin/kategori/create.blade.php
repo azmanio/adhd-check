@@ -54,15 +54,6 @@
                         <label for="range_max" class="form-label">Range Maximal</label>
                         <input type="number" class="form-control" step="0.1" id="range_max" name="range_max" required>
                     </div>
-                    <div class="mb-3">
-                        <label for="kriteria_id" class="form-label">Kriteria</label>
-                        <select name="kriteria_id" id="kriteria_id" class="form-select" required>
-                            <option value="" selected disabled>-- Pilih Kriteria --</option>
-                            @foreach ($kriterias as $item)
-                                <option value="{{ $item->id }}">{{ $item->nama }}</option>
-                            @endforeach
-                        </select>
-                    </div>
                     <button type="submit" class="btn btn-primary">Simpan</button>
                 </form>
             </div>

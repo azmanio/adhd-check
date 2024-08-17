@@ -48,16 +48,18 @@
                     </div>
                     <div class="mb-3">
                         <label for="nama" class="form-label">Nama</label>
-                        <input type="text" name="nama" class="form-control" id="nama" required autofocus>
+                        <input type="text" name="nama" class="form-control" id="nama" value="{{ old('nama') }}"
+                            required autofocus>
                     </div>
                     <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
                         <input type="email" name="email" class="form-control" id="email"
-                            placeholder="example@gmail.com" required>
+                            placeholder="example@gmail.com" value="{{ old('email') }}" required>
                     </div>
                     <div class="mb-3">
                         <label for="no_hp" class="form-label">No Handphone</label>
-                        <input type="text" name="no_hp" class="form-control" id="no_hp" placeholder="" required>
+                        <input type="text" name="no_hp" class="form-control" id="no_hp" value="{{ old('no_hp') }}"
+                            placeholder="" required>
                     </div>
                     <div class="mb-3">
                         <label for="password" class="form-label">Password</label>

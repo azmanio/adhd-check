@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Gejala;
+use App\Models\Kriteria;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class GejalaController extends Controller
 {
@@ -13,6 +15,9 @@ class GejalaController extends Controller
     public function index()
     {
         $data = Gejala::all();
+        $title = 'Apa kamu yakin?';
+        $text = "Data yang dihapus tidak dapat dikembalikan lagi";
+        confirmDelete($title, $text);
         return view('pages.admin.gejala.index', compact('data'));
     }
 
@@ -21,7 +26,8 @@ class GejalaController extends Controller
      */
     public function create()
     {
-        return view('pages.admin.gejala.create');
+        $kriteria = Kriteria::all();
+        return view('pages.admin.gejala.create', compact('kriteria'));
     }
 
     /**
@@ -31,10 +37,12 @@ class GejalaController extends Controller
     {
         $data = $request->validate([
             'kode_gejala' => ['required', 'string'],
-            'nama' => ['required', 'string'],
+            'gejala' => ['required', 'string'],
+            'kriteria_id' => ['required', 'string', 'exists:kriterias,id'],
         ]);
 
         Gejala::create($data);
+        Alert::success('Sukses!', 'Data Berhasil Disimpan');
         return redirect()->route('gejala.index');
     }
 
@@ -51,7 +59,8 @@ class GejalaController extends Controller
      */
     public function edit(Gejala $gejala)
     {
-        return view('pages.admin.gejala.update', compact('gejala'));
+        $kriterias = Kriteria::all();
+        return view('pages.admin.gejala.update', compact('gejala', 'kriterias'));
     }
 
     /**
@@ -61,10 +70,12 @@ class GejalaController extends Controller
     {
         $data = $request->validate([
             'kode_gejala' => ['required', 'string'],
-            'nama' => ['required', 'string'],
+            'gejala' => ['required', 'string'],
+            'kriteria_id' => ['required', 'string', 'exists:kriterias,id'],
         ]);
 
         $gejala->update($data);
+        Alert::success('Sukses!', 'Data Berhasil Diubah');
         return redirect()->route('gejala.index');
     }
 
@@ -74,6 +85,7 @@ class GejalaController extends Controller
     public function destroy(Gejala $gejala)
     {
         $gejala->delete();
+        Alert::success('Sukses!', 'Data Berhasil Dihapus');
         return redirect()->route('gejala.index');
     }
 }

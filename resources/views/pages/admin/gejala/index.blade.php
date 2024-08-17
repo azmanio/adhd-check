@@ -1,25 +1,5 @@
 @extends('layouts.admin')
 
-@push('script')
-    <script>
-        function delete_confirm(url) {
-            Swal.fire({
-                title: "Apa Kamu Yakin?",
-                text: "Data yang dihapus tidak dapat dikembalikan lagi",
-                icon: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#3085d6",
-                cancelButtonColor: "#d33",
-                confirmButtonText: "Yes!"
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    window.location.href = url
-                }
-            });
-        }
-    </script>
-@endpush
-
 @section('breadcrumb')
     <div class="container-fluid px-4">
         <nav aria-label="breadcrumb">
@@ -49,13 +29,14 @@
         <div class="card">
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table align-middle w-100" id="dataTable">
+                    <table class="table table-hover align-middle w-100" id="dataTable">
                         <thead>
                             <tr>
                                 <th class="text-center" scope="col">No</th>
                                 <th class="text-center" scope="col">Kode Gejala</th>
                                 <th class="text-center" scope="col">Gejala</th>
                                 <th class="text-center" scope="col">Bobot Prioritas</th>
+                                <th class="text-center" scope="col">Kriteria</th>
                                 <th class="text-center" scope="col" class="text-center">Aksi</th>
                             </tr>
                         </thead>
@@ -66,14 +47,15 @@
                                     <td class="text-center">{{ $item->kode_gejala }}</td>
                                     <td>{{ $item->gejala }}</td>
                                     <td class="text-center">{{ number_format($item->bobot_prioritas, 3) }}</td>
+                                    <td class="text-center">{{ $item->kriteria ? $item->kriteria->nama : '-' }}</td>
                                     <td class="text-center d-flex flex-column d-md-block py-3">
                                         <a class="btn btn-primary mb-2" href="{{ route('gejala.edit', $item) }}">
                                             <i class="cil-pen"></i>
                                         </a>
-                                        <button class="btn btn-danger mb-2"
-                                            onclick="delete_confirm('{{ route('gejala.delete', $item) }}')">
+                                        <a class="btn btn-danger" href="{{ route('gejala.destroy', $item) }}"
+                                            data-confirm-delete="true">
                                             <i class="fas fa-trash-alt text-white"></i>
-                                        </button>
+                                        </a>
                                     </td>
                                 </tr>
                             @endforeach

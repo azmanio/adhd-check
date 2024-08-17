@@ -45,7 +45,7 @@
                                 <img src="{{ asset('storage/' . $user->image_path) }}" alt="Foto" class="rounded-circle"
                                     style="height: 150px; width: 150px; object-fit: cover">
                             @else
-                                <img src="{{ asset('assets/img/user.png') }}" alt="Foto" class="rounded-circle"
+                                <img src="{{ asset('assets/admin/img/user.png') }}" alt="Foto" class="rounded-circle"
                                     style="height: 150px; width: 150px; object-fit: cover">
                             @endif
                         </div>

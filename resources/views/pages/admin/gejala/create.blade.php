@@ -39,6 +39,15 @@
                     @endif
                     @csrf
                     <div class="mb-3">
+                        <label for="kriteria_id" class="form-label">Kriteria</label>
+                        <select name="kriteria_id" id="kriteria_id" class="form-select" required>
+                            <option value="" selected disabled>-- Pilih Kriteria --</option>
+                            @foreach ($kriteria as $item)
+                                <option value="{{ $item->id }}">{{ $item->nama }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="mb-3">
                         <label for="kode_gejala" class="form-label">Kode Gejala</label>
                         <input type="text" name="kode_gejala" class="form-control" id="kode_gejala" required autofocus>
                     </div>

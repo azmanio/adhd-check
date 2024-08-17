@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Kriteria;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class KriteriaController extends Controller
 {
@@ -13,6 +14,9 @@ class KriteriaController extends Controller
     public function index()
     {
         $data = Kriteria::all();
+        $title = 'Apa kamu yakin?';
+        $text = "Data yang dihapus tidak dapat dikembalikan lagi";
+        confirmDelete($title, $text);
         return view('pages.admin.kriteria.index', compact('data'));
     }
 
@@ -33,9 +37,11 @@ class KriteriaController extends Controller
             'kode_kriteria' => ['required', 'string'],
             'nama' => ['required', 'string'],
             'deskripsi' => ['required', 'string'],
+            'solusi' => ['required', 'string'],
         ]);
 
         Kriteria::create($data);
+        Alert::success('Sukses!', 'Data Berhasil Disimpan');
         return redirect()->route('kriteria.index');
     }
 
@@ -64,9 +70,11 @@ class KriteriaController extends Controller
             'kode_kriteria' => ['required', 'string'],
             'nama' => ['required', 'string'],
             'deskripsi' => ['required', 'string'],
+            'solusi' => ['required', 'string'],
         ]);
 
         $kriterium->update($data);
+        Alert::success('Sukses!', 'Data Berhasil Diubah');
         return redirect()->route('kriteria.index');
     }
 
@@ -76,6 +84,7 @@ class KriteriaController extends Controller
     public function destroy(Kriteria $kriterium)
     {
         $kriterium->delete();
+        Alert::success('Sukses!', 'Data Berhasil Dihapus');
         return redirect()->route('kriteria.index');
     }
 }

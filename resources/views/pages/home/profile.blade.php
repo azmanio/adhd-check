@@ -108,7 +108,7 @@
             </div>
             @if ($riwayats->count())
                 <div class="table-responsive">
-                    <table class="table" id="dataTable">
+                    <table class="table table-hover" id="dataTable">
                         <thead>
                             <tr class="align-middle">
                                 <th scope="col" class="text-center">No</th>
@@ -131,7 +131,7 @@
                                     <td class="text-center">{{ $item->umur_anak }}</td>
                                     <td class="text-center">{{ $item->instansi }}</td>
                                     <td class="text-center">{{ number_format($item->nilai_hasil, 3) }}</td>
-                                    <td class="text-center">{{ $item->kriteria->nama }}</td>
+                                    <td class="text-center">{{ $item->kriteria->nama ?? '-' }}</td>
                                     <td class="text-center">{{ $item->kategori }}</td>
                                     <td class="text-center">{{ number_format($item->persentase_combined, 2) }}%</td>
                                     <td class="text-center">{{ date_format($item->created_at, 'd-m-Y') }}</td>
@@ -139,7 +139,8 @@
                                         <div class="d-flex flex-column d-md-block justify-content-center">
                                             <a class="btn btn-primary mb-2"
                                                 href="{{ route('hasil-diagnosis', $item->id) }}">
-                                                <i class="fas fa-info-circle"></i> </a>
+                                                <i class="fas fa-info-circle"></i>
+                                            </a>
                                         </div>
                                     </td>
                                 </tr>

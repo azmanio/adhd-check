@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\RandomIndex;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class RandomIndexController extends Controller
 {
@@ -13,6 +14,9 @@ class RandomIndexController extends Controller
     public function index()
     {
         $data = RandomIndex::all();
+        $title = 'Apa kamu yakin?';
+        $text = "Data yang dihapus tidak dapat dikembalikan lagi";
+        confirmDelete($title, $text);
         return view('pages.admin.random_index.index', compact('data'));
     }
 
@@ -35,6 +39,7 @@ class RandomIndexController extends Controller
         ]);
 
         RandomIndex::create($data);
+        Alert::success('Sukses!', 'Data Berhasil Disimpan');
         return redirect()->route('random-index.index');
     }
 
@@ -65,6 +70,7 @@ class RandomIndexController extends Controller
         ]);
 
         $randomIndex->update($data);
+        Alert::success('Sukses!', 'Data Berhasil Diubah');
         return redirect()->route('random-index.index');
     }
 
@@ -74,6 +80,7 @@ class RandomIndexController extends Controller
     public function destroy(RandomIndex $randomIndex)
     {
         $randomIndex->delete();
+        Alert::success('Sukses!', 'Data Berhasil Dihapus');
         return redirect()->route('random-index.index');
     }
 }

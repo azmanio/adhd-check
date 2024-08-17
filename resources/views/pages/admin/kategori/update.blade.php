@@ -61,16 +61,6 @@
                             <input type="number" step="0.1" name="range_max" class="form-control" id="range_max"
                                 value="{{ old('range_max') ?? $kategori->range_max }}" required>
                         </div>
-                        <div class="mb-3">
-                            <label for="kriteria_id" class="form-label">Kriteria</label>
-                            <select name="kriteria_id" id="kriteria_id" class="form-select" required>
-                                <option value="" disabled>-- Pilih Kriteria --</option>
-                                @foreach ($kriterias as $item)
-                                    <option {{ $item->id == $kategori->kriteria_id ? 'selected' : '' }}
-                                        value="{{ $item->id }}">{{ $item->nama }}</option>
-                                @endforeach
-                            </select>
-                        </div>
                         <button type="submit" class="btn btn-primary">Ubah</button>
                 </form>
             </div>

@@ -1,25 +1,5 @@
 @extends('layouts.admin')
 
-@push('script')
-    <script>
-        function delete_confirm(url) {
-            Swal.fire({
-                title: "Apa Kamu Yakin?",
-                text: "Data yang dihapus tidak dapat dikembalikan lagi",
-                icon: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#3085d6",
-                cancelButtonColor: "#d33",
-                confirmButtonText: "Yes!"
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    window.location.href = url
-                }
-            });
-        }
-    </script>
-@endpush
-
 @section('breadcrumb')
     <div class="container-fluid px-4">
         <nav aria-label="breadcrumb">

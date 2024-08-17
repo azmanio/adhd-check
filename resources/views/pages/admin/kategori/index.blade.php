@@ -1,25 +1,5 @@
 @extends('layouts.admin')
 
-@push('script')
-    <script>
-        function delete_confirm(url) {
-            Swal.fire({
-                title: "Apa Kamu Yakin?",
-                text: "Data yang dihapus tidak dapat dikembalikan lagi",
-                icon: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#3085d6",
-                cancelButtonColor: "#d33",
-                confirmButtonText: "Yes!"
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    window.location.href = url
-                }
-            });
-        }
-    </script>
-@endpush
-
 @section('breadcrumb')
     <div class="container-fluid px-4">
         <nav aria-label="breadcrumb">
@@ -49,7 +29,7 @@
         <div class="card">
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table align-middle w-100" id="dataTable">
+                    <table class="table table-hover w-100" id="dataTable">
                         <thead>
                             <tr class="align-middle">
                                 <th class="text-center" scope="col">No</th>
@@ -65,7 +45,7 @@
                                 <tr>
                                     <td class="text-center">{{ $index + 1 }}</td>
                                     <td class="text-center">{{ $item->kategori }}</td>
-                                    <td class="text-center">{{ $item->keterangan }}</td>
+                                    <td>{{ $item->keterangan }}</td>
                                     <td class="text-center">{{ $item->range_min }}</td>
                                     <td class="text-center">{{ $item->range_max }}</td>
                                     <td class="text-center">
@@ -74,10 +54,10 @@
                                                 href="{{ route('kategori.edit', $item) }}">
                                                 <i class="cil-pen"></i>
                                             </a>
-                                            <button class="btn btn-danger"
-                                                onclick="delete_confirm('{{ route('kategori.delete', $item) }}')">
+                                            <a class="btn btn-danger" href="{{ route('kategori.destroy', $item) }}"
+                                                data-confirm-delete="true">
                                                 <i class="fas fa-trash-alt text-white"></i>
-                                            </button>
+                                            </a>
                                         </div>
                                     </td>
                                 </tr>

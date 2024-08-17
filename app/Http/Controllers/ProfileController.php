@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Riwayat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ProfileController extends Controller
 {
@@ -42,6 +43,7 @@ class ProfileController extends Controller
         $user = auth()->user();
 
         $user->update($data);
+        Alert::success('Sukses!', 'Profil Berhasil Diubah');
 
         return redirect()->route('profile.index');
     }

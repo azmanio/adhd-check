@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class UserController extends Controller
 {
@@ -14,6 +15,9 @@ class UserController extends Controller
     public function index()
     {
         $data = User::all();
+        $title = 'Apa kamu yakin?';
+        $text = "Data yang dihapus tidak dapat dikembalikan lagi";
+        confirmDelete($title, $text);
         return view('pages.admin.user.index', compact('data'));
     }
 
@@ -47,6 +51,7 @@ class UserController extends Controller
         }
 
         User::create($data);
+        Alert::success('Sukses!', 'Data Berhasil Disimpan');
         return redirect()->route('user.index');
     }
 
@@ -92,6 +97,7 @@ class UserController extends Controller
         }
 
         $user->update($data);
+        Alert::success('Sukses!', 'Data Berhasil Diubah');
         return redirect()->route('user.index');
     }
 
@@ -101,6 +107,7 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         $user->delete();
+        Alert::success('Sukses!', 'Data Berhasil Dihapus');
         return redirect()->route('user.index');
     }
 }

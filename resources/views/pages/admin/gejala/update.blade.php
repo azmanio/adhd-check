@@ -41,17 +41,26 @@
                     @csrf
                     @method('PUT')
                     <div class="mb-3">
-                        <div class="mb-3">
-                            <label for="kode_gejala" class="form-label">Kode Gejala</label>
-                            <input type="text" name="kode_gejala" class="form-control" id="kode_gejala"
-                                value="{{ old('kode_gejala') ?? $gejala->kode_gejala }}" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="nama" class="form-label">Nama</label>
-                            <input type="text" name="nama" class="form-control" id="nama"
-                                value="{{ old('nama') ?? $gejala->nama }}" required>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Ubah</button>
+                        <label for="kriteria_id" class="form-label">Kriteria</label>
+                        <select name="kriteria_id" id="kriteria_id" class="form-select" required>
+                            <option value="" disabled>-- Pilih Kriteria --</option>
+                            @foreach ($kriterias as $item)
+                                <option {{ $item->id == $gejala->kriteria_id ? 'selected' : '' }}
+                                    value="{{ $item->id }}">{{ $item->nama }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="kode_gejala" class="form-label">Kode Gejala</label>
+                        <input type="text" name="kode_gejala" class="form-control" id="kode_gejala"
+                            value="{{ old('kode_gejala') ?? $gejala->kode_gejala }}" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="gejala" class="form-label">Gejala</label>
+                        <input type="text" name="gejala" class="form-control" id="gejala"
+                            value="{{ old('gejala') ?? $gejala->gejala }}" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Ubah</button>
                 </form>
             </div>
         </div>

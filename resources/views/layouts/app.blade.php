@@ -15,6 +15,8 @@
 </head>
 
 <body>
+    @include('sweetalert::alert')
+
     @include('includes.navbar')
 
     <main>

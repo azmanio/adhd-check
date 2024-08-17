@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-    <!-- Header -->
     <header id="header" class="header">
         <img class="decoration-star" src="assets/img/decoration-star.svg" alt="alternative">
         <img class="decoration-star-2" src="assets/img/decoration-star.svg" alt="alternative">

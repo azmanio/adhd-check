@@ -1,3 +1,23 @@
+@push('script')
+    <script>
+        function logout_confirm(formId) {
+            Swal.fire({
+                title: "Apa Kamu Yakin?",
+                text: 'Klik "Yes" untuk mengakhiri session.',
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById(formId).submit();
+                }
+            });
+        }
+    </script>
+@endpush
+
 <div class="container-fluid border-bottom px-4">
     <button class="header-toggler" type="button"
         onclick="coreui.Sidebar.getInstance(document.querySelector('#sidebar')).toggle()"
@@ -52,10 +72,16 @@
         <li class="nav-item py-1">
             <div class="vr h-100 mx-2 text-body text-opacity-75"></div>
         </li>
-        <li class="nav-item dropdown"><a class="nav-link py-0 pe-0" data-coreui-toggle="dropdown" href="#"
-                role="button" aria-haspopup="true" aria-expanded="false">
-                <div class="avatar avatar-md"><img class="avatar-img"
-                        src="{{ asset('assets/admin/img/avatars/8.jpg') }}" alt="user@email.com"></div>
+        <li class="nav-item dropdown">
+            <a class="nav-link py-0 pe-0" data-coreui-toggle="dropdown" href="#" role="button"
+                aria-haspopup="true" aria-expanded="false">
+                <div class="avatar avatar-md">
+                    @if (auth()->user()->image_path)
+                        <img src="/storage/{{ auth()->user()->image_path }}" alt="Foto" class="avatar-img">
+                    @else
+                        <img src="{{ asset('assets/admin/img/avatars/2.jpg') }}" alt="Foto" class="avatar-img">
+                    @endif
+                </div>
             </a>
             <div class="dropdown-menu dropdown-menu-end pt-0">
                 <div class="dropdown-header bg-body-tertiary text-body-secondary fw-semibold rounded-top mb-2">
@@ -72,14 +98,14 @@
                         <span class="mx-2">Profile</span>
                     </div>
                 </a>
-                <a class="dropdown-item" href="#">
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="{{ route('auth.logout') }}">
-                        <div class="me-2">
-                            <i class="cil-account-logout icon"></i>
-                            <span class="mx-2">Logout</span>
-                        </div>
-                    </a>
+                <div class="dropdown-divider"></div>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
+                <button class="dropdown-item" onclick="logout_confirm('logout-form')">
+                    <i class="cil-account-logout icon"></i>
+                    <span class="mx-2">Logout</span>
+                </button>
             </div>
         </li>
     </ul>
