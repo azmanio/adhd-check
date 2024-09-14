@@ -148,7 +148,9 @@ class DiagnosisController extends Controller
         $kriteria_dominan = Kriteria::find($kriteria_dominan_id);
         $kriteria_dominan_nama = $kriteria_dominan->nama;
 
-        $kategoris = Kategori::where('range_min', '<=', $total_nilai_user)->where('range_max', '>=', $total_nilai_user)->first();
+        $kategoris = Kategori::where('range_min', '<=', $total_nilai_user)
+            ->where('range_max', '>=', $total_nilai_user)
+            ->first();
         $kategori = $kategoris->kategori;
         $keterangan_kategori = $kategoris->keterangan;
 
@@ -240,7 +242,17 @@ class DiagnosisController extends Controller
             session()->put('total_nilai_user', $total_nilai_user);
         }
 
-        return view('pages.home.diagnosis.hasil', compact('riwayat', 'nilai_akhir_kriteria', 'deskripsi_kriteria', 'keterangan_kategori', 'total_nilai_user'));
+        return
+            view(
+                'pages.home.diagnosis.hasil',
+                compact(
+                    'riwayat',
+                    'nilai_akhir_kriteria',
+                    'deskripsi_kriteria',
+                    'keterangan_kategori',
+                    'total_nilai_user',
+                ),
+            );
     }
 
     public function cetakPdf($riwayat_id)

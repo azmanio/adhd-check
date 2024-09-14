@@ -30,7 +30,7 @@
                                             <p><Strong>Keterangan:</Strong></p>
                                             <p>{{ $keterangan_kategori }}</p>
                                         </div>
-                                        @if ($total_nilai_user > 2)
+                                        @if ($riwayat->persentase_combined > 20)
                                             <h5 class="text-center mb-3">Nilai Akhir Kriteria</h5>
                                             <div class="d-flex gap-4 justify-content-center">
                                                 @if ($nilai_akhir_kriteria)

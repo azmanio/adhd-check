@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\ForceToHTTPS;
 use App\Http\Middleware\IsAdmin;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
@@ -17,6 +18,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'isAdmin' => IsAdmin::class,
         ]);
         $middleware->redirectGuestsTo(fn(Request $request) => route('login'));
+        $middleware->append(ForceToHTTPS::class);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

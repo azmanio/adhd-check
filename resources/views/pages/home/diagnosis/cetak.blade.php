@@ -105,7 +105,7 @@
             <p><Strong>Keterangan:</Strong></p>
             {{ $keterangan_kategori }}
         </div>
-        @if ($total_nilai_user > 2)
+        @if ($riwayat->persentase_combined > 20)
             <h6 class="section-header mb-2">Nilai Akhir Kriteria</h6>
             <table class="table table-bordered">
                 <thead>

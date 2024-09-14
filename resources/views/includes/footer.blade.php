@@ -5,8 +5,11 @@
             <div class="col-lg-12">
                 <div class="footer-col first">
                     <h6>About Website</h6>
-                    <p class="p-small">He oppose at thrown desire of no. Announcing impression unaffected day his
-                        are unreserved indulgence. Him hard find read are you</p>
+                    <p class="p-small"><strong>ADHDCheck</strong> merupakan sistem yang bekerja untuk mendiagnosis
+                        penyakit <i>
+                            Attention
+                            Deficit Hyperactivity Disorder
+                        </i> (ADHD) pada anak berdasarkan analisis tingkah laku.</p>
                 </div>
                 <div class="footer-col second">
                     <h6>Links</h6>

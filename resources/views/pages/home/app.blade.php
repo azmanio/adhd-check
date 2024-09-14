@@ -24,7 +24,7 @@
     </header>
 
     <!-- Statistics -->
-    <div class="counter">
+    {{-- <div class="counter">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -56,18 +56,44 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     <!-- Introduction -->
     <div id="introduction" class="basic-1 bg-gray">
         <div class="container">
             <div class="row">
                 <div class="col-xl-9">
-                    <h2>Creating office spaces is our passion and you can see that in our completed projects</h2>
-                    <p>Unpleasing has ask acceptance partiality alteration understood two. Worth no tiled my at house
-                        added. Married he hearing am it totally removal. Remove but suffer wanted his lively length.
-                        Moonlight two applauded conveying end direction old principle but. Are expenses distance
-                        weddings perceive</p>
+                    <p>
+                        <strong>ADHDCheck</strong> merupakan sistem yang bekerja untuk mendiagnosis penyakit <i>
+                            Attention
+                            Deficit Hyperactivity Disorder
+                        </i> (ADHD) pada anak berdasarkan analisis tingkah laku. Sistem ini
+                        bekerja sesuai dengan pengetahuan pakar di bidang psikologis sehingga dapat menghasilkan diagnosis
+                        yang sesuai dan mendapat solusi penanganan mengenai penyakit ADHD yang dapat menjadi pencegahan awal
+                        bagi anak yang diduga menderitanya.
+                    </p>
+                    <h2>Apa itu ADHD?</h2>
+                    <p><strong><i>Attention Deficit Hyperactivity Disorder</i> (ADHD)</strong> adalah suatu kondisi gangguan
+                        perkembangan saraf yang sering terjadi pada anak-anak. Gangguan ini dapat memengaruhi kemampuan
+                        belajar di sekolah, interaksi sosial dengan teman dan keluarga, serta kesejahteraan psikologis.
+                        Secara umum, anak yang mengalami gangguan ADHD memiliki tiga karakteristik utama, yaitu kesulitan
+                        dalam mempertahankan konsentrasi (Inattention), tingkat impulsivitas yang tinggi (Impulsive), dan
+                        hiperaktivitas (Hyperactivity).</p>
+                    <p>Berdasarkan <i>Diagnostic and Statistical Manual of Mental Disorders</i> (5th ed.),
+                        terdapat beberapa kriteria diagnosis ADHD, diantaranya adalah:
+                    <ol>
+                        <li>Pola inatensi dan atau hiperaktivitas-impulsivitas yang persisten dan mengganggu fungsi atau
+                            perkembangan dengan 6 atau lebih gejala menetap selama sedikitnya 6 bulan hingga menyebabkan
+                            gangguan perkembangan dan memiliki efek negatif langsung terhadap aktivitas sosial dan akademik.
+                        </li>
+                        <li>Beberapa gejala inatensi atau hiperaktivitas-impulsivitas ada sebelum usia 12 tahun.</li>
+                        <li>Beberapa gejala inatensi atau hiperaktivitas-impulsivitas ditemukan pada setidaknya 2 setting,
+                            seperti rumah, sekolah, pekerjaan, dengan teman, keluarga, atau aktivitas lain.</li>
+                        <li>Terdapat bukti nyata bahwa gejala mengganggu atau menurunkan kualitas kehidupan sosial,
+                            akademik,
+                            dan pekerjaan.</li>
+                    </ol>
+                    </p>
                 </div>
             </div>
         </div>
@@ -85,30 +111,28 @@
                 </div>
                 <div class="col-lg-6 col-xl-7">
                     <div class="text-container">
-                        <h2>Office spaces should be unique they don’t need to look the same</h2>
+                        <h2>Bagaimana Sistem Pakar Bekerja?</h2>
                         <ul class="list-unstyled li-space-lg">
                             <li class="d-flex">
                                 <i class="fas fa-square"></i>
-                                <div class="flex-grow-1">At every tiled on ye defer do. No attention suspected oh
-                                    difficult. Fond his say</div>
+                                <div class="flex-grow-1"><b>Memilih Gejala:</b> Anda akan memasukkan gejala-gejala yang
+                                    dialami
+                                    anak.</div>
                             </li>
                             <li class="d-flex">
                                 <i class="fas fa-square"></i>
-                                <div class="flex-grow-1">Old meet cold find come whom. The sir park sake bred. Wonder
-                                    matter now</div>
+                                <div class="flex-grow-1"><b>Analisis Sistem:</b> Sistem akan menganalisis gejala menggunakan
+                                    metode
+                                    AHP dan Teorema Bayes.</div>
                             </li>
                             <li class="d-flex">
                                 <i class="fas fa-square"></i>
-                                <div class="flex-grow-1">Can estate esteem assure fat roused. Am performed on existence
-                                    as discourse</div>
-                            </li>
-                            <li class="d-flex">
-                                <i class="fas fa-square"></i>
-                                <div class="flex-grow-1">existence as discourse is. Pleasure friendly at marriage
-                                    blessing or should</div>
+                                <div class="flex-grow-1"><b>Dapatkan Hasil:</b> Sistem akan memberikan hasil diagnosa dan
+                                    saran
+                                    untuk langkah selanjutnya.</div>
                             </li>
                         </ul>
-                        <a class="btn-solid-reg" href="article.html">Get started</a>
+                        <a class="btn-solid-reg" href="{{ route('form-identitas') }}">Diagnosis Sekarang</a>
                     </div>
                 </div>
             </div>
@@ -116,7 +140,7 @@
     </div>
 
     <!-- Services -->
-    <div id="services" class="cards-1 bg-gray">
+    {{-- <div id="services" class="cards-1 bg-gray">
         <div class="container">
             <div class="row">
                 <div class="col-lg-5">
@@ -208,10 +232,10 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     <!-- Details 2 -->
-    <div class="basic-3">
+    {{-- <div class="basic-3">
         <img class="decoration-star" src="assets/img/decoration-star.svg" alt="alternative">
         <div class="container">
             <div class="row">
@@ -232,10 +256,10 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     <!-- Invitation -->
-    <div class="basic-4 bg-gray">
+    {{-- <div class="basic-4 bg-gray">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -245,10 +269,10 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     <!-- Projects -->
-    <div id="projects" class="cards-2">
+    {{-- <div id="projects" class="cards-2">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -322,10 +346,10 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     <!-- Testimonials -->
-    <div class="slider-1 bg-gray">
+    {{-- <div class="slider-1 bg-gray">
         <img class="quotes-decoration" src="assets/img/quotes.svg" alt="alternative">
         <div class="container">
             <div class="row">
@@ -381,10 +405,10 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     <!-- Contact -->
-    <div id="contact" class="form-1">
+    {{-- <div id="contact" class="form-1">
         <img class="decoration-star" src="assets/img/decoration-star.svg" alt="alternative">
         <img class="decoration-star-2" src="assets/img/decoration-star.svg" alt="alternative">
         <div class="container">
@@ -418,5 +442,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 @endsection
